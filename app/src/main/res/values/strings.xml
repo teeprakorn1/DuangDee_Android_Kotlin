@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">DuangDee Project</string>
+    <string name="app_name">DuangDee</string>
+    <string name="url_server">http://10.13.4.231:3000/</string>
+    <string name="api_login">api/login</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="URl_API">http://10.13.4.231:3000/</string>
-    <string name="API_LOGIN">api/login</string>
 </resources>

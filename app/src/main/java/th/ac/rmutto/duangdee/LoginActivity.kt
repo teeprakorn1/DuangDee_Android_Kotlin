@@ -16,8 +16,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
-import th.ac.rmutto.duangdee.MainActivity
-import th.ac.rmutto.duangdee.R
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val url = "http://10.13.4.231:3000/api/login"
+            val url = getString(R.string.url_server) + getString(R.string.api_login)
             val okHttpClient = OkHttpClient()
             val formBody: RequestBody = FormBody.Builder()
                 .add("username",username)
