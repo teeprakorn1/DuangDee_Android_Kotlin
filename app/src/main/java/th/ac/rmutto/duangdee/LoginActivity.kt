@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        supportActionBar?.hide()
         //For an synchronous task
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
         val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.ButtonLogin)
-        val buttonRegister = findViewById<Button>(R.id.RegisterButton)
+//        val buttonRegister = findViewById<Button>(R.id.RegisterButton)
 
         buttonLogin.setOnClickListener {
             val username = editTextUsername.text.toString()
@@ -82,9 +82,9 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        buttonRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
+//        buttonRegister.setOnClickListener {
+//            val intent = Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 }

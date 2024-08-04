@@ -6,4 +6,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="title_email_user">\ Email/Username</string>
+    <string name="title_user">Username</string>
+    <string name="title_password">\ Password</string>
+    <string name="title_login">Login</string>
+    <string name="title_login_google">Login With Google</string>
+    <string name="title_register">Register</string>
+    <string name="title_register_with">Register WITH</string>
+    <string name="title_loading">Loading</string>
+    <string name="title_Forgot">Forgot password?</string>
+    <string name="title_not_account">Don\'t have account?</string>
+
+
 </resources>
