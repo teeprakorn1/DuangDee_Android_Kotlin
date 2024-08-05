@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,7 +36,9 @@ class LoginActivity : AppCompatActivity() {
         val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
         val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.ButtonLogin)
-//        val buttonRegister = findViewById<Button>(R.id.RegisterButton)
+        val buttonRegister = findViewById<TextView>(R.id.TextRegister_Btn)
+        val buttonLoginGoogle = findViewById<Button>(R.id.ButtonLoginGoogle)
+        val forgotPassword = findViewById<TextView>(R.id.TextForgotPassword_Btn)
 
         buttonLogin.setOnClickListener {
             val username = editTextUsername.text.toString()
@@ -53,8 +56,8 @@ class LoginActivity : AppCompatActivity() {
             val url = getString(R.string.url_server) + getString(R.string.api_login)
             val okHttpClient = OkHttpClient()
             val formBody: RequestBody = FormBody.Builder()
-                .add("username",username)
-                .add("password",password)
+                .add("Users_Username",username)
+                .add("Users_Password",password)
                 .build()
             val request: Request = Request.Builder()
                 .url(url)
@@ -82,9 +85,9 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-//        buttonRegister.setOnClickListener {
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
-//        }
+        buttonRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
