@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://10.13.4.231:3000/</string>
+    <string name="url_server">http://192.168.1.108:3000/</string>
     <string name="api_login">api/login</string>
 
     <string name="title_home">Home</string>
@@ -8,8 +8,19 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="title_email_user">\ Email/Username</string>
-    <string name="title_user">Username</string>
+    <string name="title_Email">\ Email</string>
+    <string name="title_username">\ Username</string>
     <string name="title_password">\ Password</string>
+    <string name="title_name">\ Name</string>
+    <string name="title_surname">\ Surname</string>
+    <string name="title_dateofbirth">\ Date of Birth</string>
+    <string name="title_day">\ Day</string>
+    <string name="title_month">\ Month</string>
+    <string name="title_year">\ Year</string>
+    <string name="title_gender">\ Gender</string>
+    <string name="title_phone">\ Phone</string>
+
+    <string name="title_confirm_password">\ Confirm Password</string>
     <string name="title_login">Login</string>
     <string name="title_login_google">Login With Google</string>
     <string name="title_register">Register</string>
@@ -17,6 +28,21 @@
     <string name="title_loading">Loading</string>
     <string name="title_Forgot">Forgot password?</string>
     <string name="title_not_account">Don\'t have account?</string>
+    <string name="title_create_account">Create Your account</string>
+
+
+    <string name="txt_email">E-mail :</string>
+    <string name="txt_password">Password :</string>
+    <string name="txt_username">Username :</string>
+    <string name="txt_confirm_password">Confirm Password :</string>
+    <string name="txt_name">Name :</string>
+    <string name="txt_surname">Surname :</string>
+    <string name="txt_dateofbirth">Date of Birth :</string>
+    <string name="txt_gender">Gender :</string>
+    <string name="txt_phone">Phone :</string>
+
+    <string name="bt_next">Next</string>
+    <string name="bt_calendar">calendar</string>
 
 
 </resources>
