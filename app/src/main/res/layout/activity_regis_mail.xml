@@ -5,7 +5,6 @@
     android:id="@+id/RegisEmail_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transformPivotX="20dp"
     tools:context=".ui.register.RegisMailActivity">
 
 
@@ -32,39 +31,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014">
+        app:layout_constraintVertical_bias="0.10">
 
         <TextView
             android:id="@+id/txt_regis_create_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="bold"
-            tools:text="@string/title_create_account" />
+            android:textStyle="bold" />
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/line_regis_email"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="fill_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/line_regis_email1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:translationX="80dp"
-                app:srcCompat="@drawable/img_line_2" />
-
-            <ImageView
-                android:id="@+id/line_regis_email2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:translationX="230dp"
-                app:srcCompat="@drawable/img_line_2" />
-        </LinearLayout>
+            android:layout_height="1.1dp"
+            app:srcCompat="@drawable/img_line_4" />
 
     </LinearLayout>
 
@@ -74,7 +57,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="@+id/background"
@@ -133,7 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_data_regis_email"
         app:layout_constraintVertical_bias="1.0" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
