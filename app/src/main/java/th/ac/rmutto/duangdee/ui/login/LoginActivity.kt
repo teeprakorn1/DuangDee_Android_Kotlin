@@ -1,4 +1,4 @@
-package th.ac.rmutto.duangdee
+package th.ac.rmutto.duangdee.ui.login
 
 
 import android.content.Intent
@@ -17,13 +17,16 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+import th.ac.rmutto.duangdee.MainActivity
+import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.ui.register.RegisMailActivity
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.Login_Activity)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -86,8 +89,14 @@ class LoginActivity : AppCompatActivity() {
         }
 
         buttonRegister.setOnClickListener {
+            val intent = Intent(this, RegisMailActivity::class.java)
+            startActivity(intent)
+        }
+
+        forgotPassword.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
         }
     }
 }

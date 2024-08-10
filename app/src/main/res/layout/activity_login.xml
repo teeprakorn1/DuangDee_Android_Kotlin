@@ -3,11 +3,11 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/Login_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
 
     <EditText
@@ -114,7 +114,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/title_register_with"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
