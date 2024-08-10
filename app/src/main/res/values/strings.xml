@@ -7,10 +7,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string name="title_email_user">\ Email/Username</string>
-    <string name="title_Email">\ Email</string>
-    <string name="title_username">\ Username</string>
-    <string name="title_password">\ Password</string>
+    <string name="title_email_user">Email/Username</string>
+    <string name="title_Email">Email</string>
+    <string name="title_username">Username</string>
+    <string name="title_password">Password</string>
     <string name="title_name">\ Name</string>
     <string name="title_surname">\ Surname</string>
     <string name="title_dateofbirth">\ Date of Birth</string>

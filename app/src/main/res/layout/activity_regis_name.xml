@@ -5,21 +5,9 @@
     android:id="@+id/RegisName_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".ui.register.RegisNameActivity">
 
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/imgbg1"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/layout_head_regis_name"
@@ -54,235 +42,249 @@
 
 
     <LinearLayout
-        android:id="@+id/layout_data_regis_name"
-        android:layout_width="0dp"
+        android:id="@+id/layout_name"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_head_regis_name"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/layout_head_regis_name">
+
+        <TextView
+            android:id="@+id/txt_regis_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/txt_name"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextRegisName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:autofillHints="@string/title_name"
+            android:background="@drawable/shape_edit"
+            android:ems="10"
+            android:hint="@string/title_name"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/blank"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_name">
+
+        <TextView
+            android:id="@+id/txt_regis_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/txt_surname"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextRegisSurname"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/title_surname"
+            android:background="@drawable/shape_edit"
+            android:ems="10"
+            android:hint="@string/title_surname"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/blank"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_dateofbirth"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_surname">
+
+        <TextView
+            android:id="@+id/txt_regis_dateofbirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/txt_dateofbirth"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_regis_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_name"
+            <EditText
+                android:id="@+id/editTextRegisDate"
+                android:layout_width="60dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="@string/title_day"
+                android:background="@drawable/shape_edit"
+                android:ems="10"
+                android:hint="@string/title_day"
+                android:inputType="text"
+                android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/blank"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/slad1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:text="/"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
             <EditText
-                android:id="@+id/editTextRegisName"
-                android:layout_width="350dp"
+                android:id="@+id/editTextRegisMonth"
+                android:layout_width="70dp"
                 android:layout_height="48dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_name"
+                android:autofillHints="@string/title_month"
                 android:background="@drawable/shape_edit"
                 android:ems="10"
-                android:hint="@string/title_name"
-                android:inputType="text"
+                android:hint="@string/title_month"
+                android:inputType="textPassword"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/blank"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/slad2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:text="/"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/editTextRegisYear"
+                android:layout_width="90dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="@string/title_year"
+                android:background="@drawable/shape_edit"
+                android:ems="10"
+                android:hint="@string/title_year"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/blank"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/logo_calendar"
+                android:contentDescription="@string/bt_calendar" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_gender"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_dateofbirth">
+
+        <TextView
+            android:id="@+id/txt_regis_gender"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:text="@string/txt_gender"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_regis_surname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/txt_surname"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/gold"
+            android:foreground="@drawable/shape_edit"
+            android:paddingHorizontal="15dp" />
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/editTextRegisSurname"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_surname"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_surname"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_gender">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_regis_phone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:text="@string/txt_phone"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_regis_dateofbirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/txt_dateofbirth"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextRegisDate"
-                    android:layout_width="50dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="10dp"
-                    android:autofillHints="@string/title_day"
-                    android:background="@drawable/shape_edit"
-                    android:ems="10"
-                    android:hint="@string/title_day"
-                    android:inputType="text"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/blank"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/slad1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="/"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
-
-                <EditText
-                    android:id="@+id/editTextRegisMonth"
-                    android:layout_width="60dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:autofillHints="@string/title_month"
-                    android:background="@drawable/shape_edit"
-                    android:ems="10"
-                    android:hint="@string/title_month"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/blank"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/slad2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="/"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
-
-                <EditText
-                    android:id="@+id/editTextRegisYear"
-                    android:layout_width="80dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:autofillHints="@string/title_year"
-                    android:background="@drawable/shape_edit"
-                    android:ems="10"
-                    android:hint="@string/title_year"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/blank"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:background="@drawable/logo_calendar"
-                    android:contentDescription="@string/bt_calendar" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txt_regis_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/txt_gender"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/gold"
-                android:foreground="@drawable/shape_edit" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txt_regis_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/txt_phone"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextRegisPhone"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_password"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_phone"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
+        <EditText
+            android:id="@+id/editTextRegisPhone"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/title_password"
+            android:background="@drawable/shape_edit"
+            android:ems="10"
+            android:hint="@string/title_phone"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/blank"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -298,9 +300,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_data_regis_name"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

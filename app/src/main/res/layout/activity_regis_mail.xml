@@ -5,21 +5,9 @@
     android:id="@+id/RegisEmail_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".ui.register.RegisMailActivity">
 
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/imgbg1"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/layout_head_regis_email"
@@ -53,49 +41,40 @@
 
 
     <LinearLayout
-        android:id="@+id/layout_data_regis_email"
-        android:layout_width="0dp"
+        android:id="@+id/LayoutMail"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_head_regis_email"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/layout_head_regis_email">
 
-        <LinearLayout
-            android:id="@+id/LayoutMail"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_regis_Email"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="30dp"
+            android:text="@string/txt_email"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_regis_Email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_email"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextRegisEmail"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_Email"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_Email"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/editTextRegisEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/title_Email"
+            android:background="@drawable/shape_edit"
+            android:ems="10"
+            android:hint="@string/title_Email"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/blank"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -112,9 +91,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_data_regis_email"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
