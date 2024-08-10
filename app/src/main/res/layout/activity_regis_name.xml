@@ -57,7 +57,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/txt_name"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -72,7 +72,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -90,10 +90,10 @@
             android:id="@+id/txt_regis_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/txt_surname"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -109,7 +109,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -131,7 +131,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/txt_dateofbirth"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -153,7 +153,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/blank"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -168,7 +168,7 @@
 
             <EditText
                 android:id="@+id/editTextRegisMonth"
-                android:layout_width="70dp"
+                android:layout_width="75dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
@@ -180,7 +180,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/blank"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -207,7 +207,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/blank"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -237,7 +237,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/txt_gender"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Spinner
@@ -246,6 +246,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/gold"
+            android:dropDownWidth="wrap_content"
             android:foreground="@drawable/shape_edit"
             android:paddingHorizontal="15dp" />
     </LinearLayout>
@@ -267,7 +268,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/txt_phone"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -283,7 +284,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
     </LinearLayout>
 

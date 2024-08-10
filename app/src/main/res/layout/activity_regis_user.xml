@@ -5,21 +5,9 @@
     android:id="@+id/RegisUser_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".ui.register.RegisUserActivity">
 
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/imgbg1"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/layout_head_regis_user"
@@ -41,7 +29,7 @@
             android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -69,7 +57,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/txt_username"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -85,7 +73,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -107,7 +95,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/txt_password"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -123,7 +111,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -140,10 +128,10 @@
             android:id="@+id/txt_regis_confirm_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/txt_confirm_password"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -159,7 +147,7 @@
             android:paddingHorizontal="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/blank"
-            android:textSize="18sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
     </LinearLayout>
 
