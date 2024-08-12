@@ -152,7 +152,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_next_regis_user"
+        android:id="@+id/Next_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
