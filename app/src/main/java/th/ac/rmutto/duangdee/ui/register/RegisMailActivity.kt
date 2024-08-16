@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import th.ac.rmutto.duangdee.PrivacyPolicyActivity
 import th.ac.rmutto.duangdee.R
 
 class RegisMailActivity : AppCompatActivity() {
@@ -25,9 +27,14 @@ class RegisMailActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
 
         val nextButton = findViewById<Button>(R.id.Next_Btn);
+        val PrivacyPolicy = findViewById<TextView>(R.id.txt_PrivacyPolicy);
 
         nextButton.setOnClickListener{
             val intent = Intent(this, RegisUserActivity::class.java)
+            startActivity(intent)
+        }
+        PrivacyPolicy.setOnClickListener {
+            val intent = Intent(this, PrivacyPolicyActivity::class.java)
             startActivity(intent)
         }
     }

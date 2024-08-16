@@ -76,6 +76,14 @@
             android:textSize="21sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/txt_PrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/privacy_policy"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 
     <Button
