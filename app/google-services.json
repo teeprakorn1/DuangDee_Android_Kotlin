@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "493994075278-ram7hedvi0f1padanlc1dilaf6rouj16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.ac.rmutto.duangdee",
+            "certificate_hash": "f138a4b251e50757696ce65853842ed601c08cc9"
+          }
+        },
+        {
           "client_id": "493994075278-l183f8cp1a1qona6p7il0hna05ibl1q8.apps.googleusercontent.com",
           "client_type": 3
         }

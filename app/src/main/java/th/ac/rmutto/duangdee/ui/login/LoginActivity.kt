@@ -117,7 +117,16 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
                 }
             }else{
-                Toast.makeText(applicationContext, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
+                val obj = JSONObject(response.body!!.string())
+                if (obj.has("login_status")){
+                    if (obj["login_status"].toString() == "false"){
+                        val message = obj["message"].toString()
+                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                    }
+                }else{
+                    Toast.makeText(applicationContext, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+                }
             }
         }
 
@@ -143,6 +152,8 @@ class LoginActivity : AppCompatActivity() {
             result -> if (result.resultCode == RESULT_OK) {
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         handleResults(task)
+    }else{
+        Toast.makeText(this, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
     }
     }
 
