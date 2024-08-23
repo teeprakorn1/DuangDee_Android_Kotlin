@@ -211,12 +211,10 @@
 
         <Button
             android:id="@+id/confirmotp_btn"
-            android:layout_width="203dp"
-            android:layout_height="58dp"
+            style="@style/button_gold"
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/gold"
-            android:text="CONFIRM OTP"
-            android:textSize="20sp"
+            android:text="@string/bt_confirm_otp"
             app:cornerRadius="20dp"
             />
 

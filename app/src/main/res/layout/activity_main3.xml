@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/gold"
+            android:background="@color/purple_200"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menu_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="4dp"
+                        app:srcCompat="@drawable/logo_home"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/menu_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        app:srcCompat="@drawable/logo_dashboard"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/menu_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        app:srcCompat="@drawable/logo_history"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menu_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="4dp"
+                        app:srcCompat="@drawable/logo_profile"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            android:backgroundTint="@color/gold"
+            android:clickable="true"
+            android:tint="@color/logo_launcher_background"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="50dp"
+            app:srcCompat="@drawable/logo_duduang"/>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

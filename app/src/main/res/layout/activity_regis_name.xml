@@ -62,18 +62,11 @@
 
         <EditText
             android:id="@+id/editTextRegisName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            style="@style/input_info"
             android:autofillHints="@string/title_name"
-            android:background="@drawable/shape_edit"
-            android:ems="10"
             android:hint="@string/title_name"
             android:inputType="text"
-            android:paddingHorizontal="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/blank"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            />
 
     </LinearLayout>
 
@@ -98,19 +91,10 @@
 
         <EditText
             android:id="@+id/editTextRegisSurname"
-            android:layout_width="350dp"
-            android:layout_height="48dp"
+            style="@style/input_info"
             android:layout_marginTop="10dp"
-            android:autofillHints="@string/title_surname"
-            android:background="@drawable/shape_edit"
-            android:ems="10"
             android:hint="@string/title_surname"
-            android:inputType="text"
-            android:paddingHorizontal="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/blank"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            android:inputType="text"/>
 
     </LinearLayout>
 
@@ -142,7 +126,7 @@
 
             <EditText
                 android:id="@+id/editTextRegisDate"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
                 android:autofillHints="@string/title_day"
@@ -273,32 +257,18 @@
 
         <EditText
             android:id="@+id/editTextRegisPhone"
-            android:layout_width="350dp"
-            android:layout_height="48dp"
+            style="@style/input_info"
             android:layout_marginTop="10dp"
             android:autofillHints="@string/title_password"
-            android:background="@drawable/shape_edit"
-            android:ems="10"
             android:hint="@string/title_phone"
-            android:inputType="text"
-            android:paddingHorizontal="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/blank"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            android:inputType="text"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/bt_next_regis_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/button_gold"
         android:layout_marginBottom="70dp"
-        android:background="@drawable/shape_button"
         android:text="@string/bt_next"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

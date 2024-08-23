@@ -26,6 +26,22 @@
                 android:layout_marginEnd="30dp"
                 android:text="@string/privacy_policy_text"
                 android:textColor="@color/logo_launcher_background" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button"
+                    style="@style/button_gold"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/bt_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 

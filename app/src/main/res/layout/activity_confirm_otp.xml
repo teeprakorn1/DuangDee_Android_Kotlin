@@ -97,20 +97,16 @@
 
             <Button
                 android:id="@+id/Back_Btn"
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
+                style="@style/button_black"
+                android:layout_width="125dp"
                 android:layout_marginEnd="50dp"
                 android:backgroundTint="@color/cardview_dark_background"
-                android:text="BACK"
-                android:textColor="@color/white"
-                app:cornerRadius="15dp" />
+                android:text="@string/bt_back"/>
 
             <Button
                 android:id="@+id/Confirm_Btn"
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:text="CONFIRM"
-                app:cornerRadius="15dp" />
+                style="@style/button_gold"
+                android:text="@string/bt_confirm" />
 
         </LinearLayout>
 

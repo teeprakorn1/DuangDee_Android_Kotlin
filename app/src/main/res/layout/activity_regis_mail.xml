@@ -62,19 +62,11 @@
 
         <EditText
             android:id="@+id/editTextRegisEmail"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            style="@style/input_info"
             android:layout_marginTop="10dp"
             android:autofillHints="@string/title_Email"
-            android:background="@drawable/shape_edit"
-            android:ems="10"
             android:hint="@string/title_Email"
-            android:inputType="text"
-            android:paddingHorizontal="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/blank"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/txt_PrivacyPolicy"
@@ -88,15 +80,9 @@
 
     <Button
         android:id="@+id/Next_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/button_gold"
         android:layout_marginBottom="70dp"
-        android:background="@drawable/shape_button"
         android:text="@string/bt_next"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

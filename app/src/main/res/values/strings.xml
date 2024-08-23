@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://192.168.1.102:3000/</string>
+    <string name="url_server">http://10.13.2.189:3000/</string>
 
     <string name="api_login">api/login</string>
     <string name="api_login_uid">api/login-uid</string>
@@ -14,35 +14,34 @@
     <string name="api_reset_password">api/reset-password</string>
     <string name="api_verify_otp">api/verify-otp</string>
     <string name="api_verify_token">api/VerifyToken</string>
-
-
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <!--Menu-->
+    <string name="title_home">หน้าหลัก</string>
+    <string name="title_dashboard">สรุป</string>
+    <string name="title_duduang">ดูดวง</string>
+    <string name="title_history">ประวัติ</string>
+    <string name="title_profile">โปรไฟล์</string>
 
     <string name="title_email_user">Email/Username</string>
     <string name="title_Email">Email</string>
     <string name="title_username">Username</string>
     <string name="title_password">Password</string>
-    <string name="title_name">\ Name</string>
-    <string name="title_surname">\ Surname</string>
-    <string name="title_dateofbirth">\ Date of Birth</string>
-    <string name="title_day">\ Day</string>
-    <string name="title_month">\ Month</string>
-    <string name="title_year">\ Year</string>
-    <string name="title_gender">\ Gender</string>
-    <string name="title_phone">\ Phone</string>
+    <string name="title_name">Name</string>
+    <string name="title_surname">Surname</string>
+    <string name="title_dateofbirth">Date of Birth</string>
+    <string name="title_day">Day</string>
+    <string name="title_month">Month</string>
+    <string name="title_year">Year</string>
+    <string name="title_gender">Gender</string>
+    <string name="title_phone">Phone</string>
 
-    <string name="title_confirm_password">\ Confirm Password</string>
+    <string name="title_confirm_password">Confirm Password</string>
     <string name="title_login">Login</string>
-    <string name="title_login_google">Login With Google</string>
     <string name="title_register">Register</string>
     <string name="title_register_with">Register WITH</string>
     <string name="title_loading">Loading</string>
     <string name="title_Forgot">Forgot password?</string>
     <string name="title_not_account">Don\'t have account?</string>
     <string name="title_create_account">Create Your account</string>
-
 
     <string name="txt_email">E-mail :</string>
     <string name="txt_password">Password :</string>
@@ -54,9 +53,20 @@
     <string name="txt_gender">Gender :</string>
     <string name="txt_phone">Phone :</string>
 
+    <!--Button-->
     <string name="bt_next">Next</string>
     <string name="bt_calendar">calendar</string>
+    <string name="bt_back">BACK</string>
+    <string name="bt_send_email">SEND EMAIL</string>
+    <string name="bt_confirm_password">CONFIRM PASSWORD</string>
+    <string name="bt_confirm">CONFIRM</string>
+    <string name="bt_confirm_otp">CONFIRM OTP</string>
+    <string name="bt_sign_out">Sign Out</string>
+    <string name="bt_login">LOGIN</string>
+    <string name="bt_login_google">Login With Google</string>
+    <string name="bt_register">REGISTER</string>
 
+    <!--privacy policy-->
     <string name="privacy_policy">\t\t\tการกดการสมัครสมาชิกถือว่าท่านยอมรับใน <u>นโยบายความเป็นส่วนตัว</u></string>
     <string name="privacy_policy_text">
         <b>1. บทนำ\n\n</b>
@@ -85,5 +95,8 @@
     </string>
     <string name="txt_empty" />
     <string name="txt_txt_01">ตั้งค่ารหัสผ่านใหม่</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
