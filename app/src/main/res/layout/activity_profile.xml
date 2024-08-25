@@ -6,21 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".ui.register.RegisNameActivity">
+    tools:context=".ui.notifications.profile.ProfileActivity">
 
 
     <LinearLayout
         android:id="@+id/layout_head_regis_name"
-        android:layout_width="match_parent"
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txt_regis_create_email"
@@ -29,7 +27,7 @@
             android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -40,9 +38,8 @@
 
     </LinearLayout>
 
-
     <LinearLayout
-        android:id="@+id/layout_name"
+        android:id="@+id/layout_DisplayName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -54,8 +51,8 @@
             android:id="@+id/txt_regis_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/txt_name"
+            android:layout_marginTop="10dp"
+            android:text="@string/title_displayname"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -63,10 +60,38 @@
         <EditText
             android:id="@+id/editTextRegisName"
             style="@style/input_info"
-            android:autofillHints="@string/title_name"
-            android:hint="@string/title_name"
-            android:inputType="text"
-            />
+            android:autofillHints="@string/title_displayname"
+            android:hint="@string/title_displayname"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_FirstName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_DisplayName">
+
+        <TextView
+            android:id="@+id/txt_FirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/txt_name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText_FirstName"
+            style="@style/input_info"
+            android:autofillHints="@string/title_firstname"
+            android:hint="@string/title_firstname"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -77,14 +102,14 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_name">
+        app:layout_constraintTop_toBottomOf="@+id/layout_FirstName">
 
         <TextView
             android:id="@+id/txt_regis_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/txt_surname"
+            android:text="@string/title_lastname"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -93,8 +118,8 @@
             android:id="@+id/editTextRegisSurname"
             style="@style/input_info"
             android:layout_marginTop="10dp"
-            android:hint="@string/title_surname"
-            android:inputType="text"/>
+            android:hint="@string/title_lastname"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -236,7 +261,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linear_layout_phone"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -256,22 +281,37 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextRegisPhone"
+            android:id="@+id/editText_Phone"
             style="@style/input_info"
             android:layout_marginTop="10dp"
             android:autofillHints="@string/title_password"
             android:hint="@string/title_phone"
-            android:inputType="text"/>
+            android:inputType="phone" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_next_regis_name"
+        android:id="@+id/Back_Btn"
+        style="@style/button_black"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/bt_back"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />
+
+    <Button
+        android:id="@+id/Save_Btn"
         style="@style/button_gold"
-        android:layout_marginBottom="70dp"
-        android:text="@string/bt_next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="@string/bt_save"
+        app:layout_constraintStart_toEndOf="@+id/Back_Btn"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

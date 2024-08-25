@@ -98,14 +98,19 @@
             <Button
                 android:id="@+id/Back_Btn"
                 style="@style/button_black"
-                android:layout_width="125dp"
-                android:layout_marginEnd="50dp"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="25dp"
                 android:backgroundTint="@color/cardview_dark_background"
-                android:text="@string/bt_back"/>
+                android:text="@string/bt_back"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/Confirm_Btn"
                 style="@style/button_gold"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:textSize="18sp"
                 android:text="@string/bt_confirm" />
 
         </LinearLayout>
