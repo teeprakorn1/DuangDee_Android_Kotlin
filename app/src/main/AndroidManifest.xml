@@ -36,7 +36,7 @@
             android:name=".ui.register.RegisMailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.RegisNameActivity"
+            android:name=".ui.notifications.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisUserActivity"

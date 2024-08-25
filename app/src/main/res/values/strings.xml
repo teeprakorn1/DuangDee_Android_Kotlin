@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://10.13.2.189:3000/</string>
+    <string name="url_server">http://192.168.1.104:3000/</string>
 
     <string name="api_login">api/login</string>
     <string name="api_login_uid">api/login-uid</string>
@@ -26,13 +26,16 @@
     <string name="title_username">Username</string>
     <string name="title_password">Password</string>
     <string name="title_name">Name</string>
+    <string name="title_firstname">First Name</string>
+    <string name="title_lastname">Last Name</string>
+    <string name="title_displayname">Display Name</string>
     <string name="title_surname">Surname</string>
     <string name="title_dateofbirth">Date of Birth</string>
     <string name="title_day">Day</string>
     <string name="title_month">Month</string>
     <string name="title_year">Year</string>
     <string name="title_gender">Gender</string>
-    <string name="title_phone">Phone</string>
+    <string name="title_phone">Phone number</string>
 
     <string name="title_confirm_password">Confirm Password</string>
     <string name="title_login">Login</string>
@@ -41,7 +44,7 @@
     <string name="title_loading">Loading</string>
     <string name="title_Forgot">Forgot password?</string>
     <string name="title_not_account">Don\'t have account?</string>
-    <string name="title_create_account">Create Your account</string>
+    <string name="title_create_account">แก้ไขบัญชีของคุณ</string>
 
     <string name="txt_email">E-mail :</string>
     <string name="txt_password">Password :</string>
@@ -51,15 +54,16 @@
     <string name="txt_surname">Surname :</string>
     <string name="txt_dateofbirth">Date of Birth :</string>
     <string name="txt_gender">Gender :</string>
-    <string name="txt_phone">Phone :</string>
+    <string name="txt_phone">Phone number:</string>
 
     <!--Button-->
-    <string name="bt_next">Next</string>
+    <string name="bt_next">ถัดไป</string>
     <string name="bt_calendar">calendar</string>
-    <string name="bt_back">BACK</string>
-    <string name="bt_send_email">SEND EMAIL</string>
-    <string name="bt_confirm_password">CONFIRM PASSWORD</string>
-    <string name="bt_confirm">CONFIRM</string>
+    <string name="bt_save">บันทึก</string>
+    <string name="bt_back">กลับ</string>
+    <string name="bt_send_email">ส่งอีเมล</string>
+    <string name="bt_confirm_password">ยืนยันรหัสผ่าน</string>
+    <string name="bt_confirm">ยืนยัน</string>
     <string name="bt_confirm_otp">CONFIRM OTP</string>
     <string name="bt_sign_out">Sign Out</string>
     <string name="bt_login">LOGIN</string>
