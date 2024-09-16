@@ -39,7 +39,7 @@ androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
-play-services-auth = { module = "com.google.android.gms:play-services-auth" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version = "20.4.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

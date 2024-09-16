@@ -36,7 +36,7 @@
             android:name=".ui.register.RegisMailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.notifications.profile.ProfileActivity"
+            android:name="th.ac.rmutto.duangdee.ui.profile.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisUserActivity"
@@ -46,15 +46,17 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoadingActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LoadingActivity"
+            android:exported="false">
+
         </activity>
     </application>
 

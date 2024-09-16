@@ -1,4 +1,4 @@
-package th.ac.rmutto.duangdee.ui.notifications.profile
+package th.ac.rmutto.duangdee.ui.profile
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -8,13 +8,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import th.ac.rmutto.duangdee.R
 
-class ProfileActivity : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         supportActionBar?.hide()
-        setContentView(R.layout.activity_profile)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.RegisName_Activity)) { v, insets ->
+        setContentView(R.layout.activity_edit_profile)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.EditProfile_Activity)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

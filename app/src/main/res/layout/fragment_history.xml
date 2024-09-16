@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.history.HistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="ประวัติ"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
 
 </FrameLayout>

@@ -12,9 +12,9 @@
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_duduang"
-        android:title=""
-        android:enabled="false"/>
+        android:id="@+id/navigation_horoscope"
+        android:icon="@drawable/logo_duduang"
+        android:title="ดูดวง"/>
 
     <item
         android:id="@+id/navigation_history"

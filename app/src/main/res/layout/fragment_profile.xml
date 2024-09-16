@@ -1,223 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    tools:context=".ui.notifications.NotificationsFragment">
+    android:layout_gravity="center"
+    android:background="@drawable/img_background"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shape_profile"
+        android:src="@drawable/img_profile"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            tools:src="@tools:sample/avatars" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile">
 
         <LinearLayout
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
             android:layout_width="350dp"
-            android:layout_height="375dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:background="@drawable/shape_otp1"
-
             android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="40dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textDisplayName"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Displayname :"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
-
+                    android:textSize="18sp" />
 
 
                 <TextView
                     android:id="@+id/textNameuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textFirstName"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Firstname :"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textSurNameuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                   />
+                    android:textSize="18sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textLastName"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Lastname :"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textBrithDayuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textBrithDay"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="BrithDay"
+                    android:text="BrithDay :"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textGenderuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text="" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textGender"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Gender :"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textPhoneuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textPhone"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Phone : "
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/TextEmailuser"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnEdit"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginEnd="45dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gold"
                     android:text="แก้ไขข้อมูล"
+                    android:textStyle="bold"
                     app:cornerRadius="20dp" />
 
                 <Button
                     android:id="@+id/btnLogout"
                     android:layout_width="150dp"
                     android:layout_height="55dp"
-                    android:layout_marginEnd="35dp"
                     android:backgroundTint="#570115"
                     android:text="ออกจากระบบ"
+                    android:textStyle="bold"
                     app:cornerRadius="20dp" />
-
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="-3dp"
+        android:src="@drawable/img_bt_edit_img"
+        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imageProfile"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageProfile" />
 </androidx.constraintlayout.widget.ConstraintLayout>
