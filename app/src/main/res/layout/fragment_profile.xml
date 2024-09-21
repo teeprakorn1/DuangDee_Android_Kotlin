@@ -8,17 +8,40 @@
     android:background="@drawable/img_background"
     tools:context=".ui.profile.ProfileFragment">
 
-    <ImageView
-        android:id="@+id/imageProfile"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/shape_profile"
-        android:src="@drawable/img_profile"
-        android:foregroundGravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="120dp"
+        app:cardBackgroundColor="@color/super_blank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_profile"
+            app:cardCornerRadius="120dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/img_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_bt_edit_img"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/cardView" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -28,7 +51,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageProfile">
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <LinearLayout
             android:layout_width="350dp"
@@ -57,9 +80,10 @@
 
 
                 <TextView
-                    android:id="@+id/textNameuser"
+                    android:id="@+id/ResultDisplayname"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
@@ -84,9 +108,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textSurNameuser"
+                    android:id="@+id/ResultFirstname"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
@@ -111,9 +136,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textBrithDayuser"
+                    android:id="@+id/ResultLastname"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1.5"
                     android:text=""
                     android:textColor="@color/white"
@@ -138,10 +164,13 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textGenderuser"
+                    android:id="@+id/ResultBrithDay"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1.5"
+                    android:textSize="18sp"
                     android:text="" />
             </LinearLayout>
 
@@ -163,10 +192,11 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textPhoneuser"
+                    android:id="@+id/ResultGender"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
+                    android:layout_marginStart="5dp"
                     android:text=""
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -191,10 +221,11 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/TextEmailuser"
+                    android:id="@+id/ResultPhone"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
+                    android:layout_marginStart="5dp"
                     android:text=""
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -234,15 +265,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="-3dp"
-        android:src="@drawable/img_bt_edit_img"
-        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
-        app:layout_constraintEnd_toEndOf="@+id/imageProfile"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageProfile" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,33 +1,62 @@
 package th.ac.rmutto.duangdee.ui.profile
 
+import android.app.Activity.RESULT_OK
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+import okhttp3.FormBody
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.login.LoginActivity
+import java.io.File
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    private lateinit var encryption: Encryption
+
+    private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
+    private var imageUri: Uri? = null
+
+    private var usersDisplayName: String? = null
+    private var usersFirstName: String? = null
+    private var usersLastName: String? = null
+    private var usersPhone: String? = null
+    private var usersDateOfBirth: String? = null
+    private var usersGender: String? = null
+    private var imageName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        // Initialize Encryption
+        encryption = Encryption(requireContext())
     }
 
     override fun onCreateView(
@@ -35,26 +64,203 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val imageProfile = view.findViewById<ImageView>(R.id.imageProfile)
+
+        val textNameUser = view.findViewById<TextView>(R.id.ResultDisplayname)
+        val textFirstName = view.findViewById<TextView>(R.id.ResultFirstname)
+        val textLastName = view.findViewById<TextView>(R.id.ResultLastname)
+        val textPhone = view.findViewById<TextView>(R.id.ResultPhone)
+        val textBrithDay = view.findViewById<TextView>(R.id.ResultBrithDay)
+        val textGender = view.findViewById<TextView>(R.id.ResultGender)
+
+        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+        val btnEdit = view.findViewById<Button>(R.id.btnEdit)
+
+        // Start Decryption SharedPreferences
+        val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val usersID = sharedPref.getString("usersID", null)
+
+        // Attempt to decrypt the token
+        val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
+        if (decode != null) {
+            updateProfile(decode, view)
+            textNameUser.text = usersDisplayName
+            textFirstName.text = usersFirstName
+            textLastName.text = usersLastName
+            textPhone.text = usersPhone
+            textGender.text = usersGender
+            textBrithDay.text = usersDateOfBirth
+        } else {
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
+
+        imagePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                imageUri = data?.data
+                imageUri?.let {
+                    updateImageProfile(decode.toString())
+                    if (decode != null) {
+                        updateProfile(decode, view)
+                    }
                 }
             }
+        }
+
+        imageProfile.setOnClickListener {
+            ImagePicker.with(this)
+                .crop()
+                .compress(1024)
+                .maxResultSize(1080, 1080)
+                .createIntent { intent ->
+                    imagePickerLauncher.launch(intent)
+                }
+        }
+
+        btnLogout.setOnClickListener {
+            val regisTypeId = sharedPref.getString("regisTypeId", null)
+            val decodeTypeID = regisTypeId?.let { decrypt(it, encryption.getKeyFromPreferences()) }
+            val editor = sharedPref.edit()
+            editor.clear()
+            editor.apply()
+            signOutOAuth()
+            if (decodeTypeID == "1"){
+                startActivity(Intent(activity, LoginActivity::class.java))
+                activity?.finish()
+            }else if(decodeTypeID == "2"){
+                signOutOAuth()
+            }
+        }
+
+        btnEdit.setOnClickListener {
+            val intent = Intent(requireActivity(), EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
+    }
+
+    private fun updateProfile(userID: String, view: View){
+        var url = getString(R.string.url_server) + getString(R.string.api_get_profile) + userID
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder()
+            .url(url)
+            .get()
+            .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                val obj = JSONObject(response.body!!.string())
+                val status = obj["status"].toString()
+                if (status == "true") {
+                    usersDisplayName = obj["Users_DisplayName"].toString()
+                    usersFirstName = obj.optString("Users_FirstName", "N/A")
+                    usersLastName = obj.optString("Users_LastName", "N/A")
+                    usersPhone = obj.optString("Users_Phone", "N/A")
+                    usersDateOfBirth = obj.optString("Users_BirthDate", "N/A")
+                    usersGender = obj.optString("UsersGender_Name", "N/A")
+                    imageName = obj.optString("Users_ImageFile", "N/A")
+
+                    if (imageName != "null") {
+                        val imageProfile = view.findViewById<ImageView>(R.id.imageProfile)
+                        url = getString(R.string.url_server) + imageName.toString()
+                        // Load image using Glide
+                        Glide.with(this)
+                            .load(url)
+                            .into(imageProfile)
+                    }
+                } else {
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                    activity?.finish()
+                }
+            } else {
+                startActivity(Intent(activity, LoginActivity::class.java))
+                activity?.finish()
+            }
+        } catch (e: Exception) {
+            Log.e("VerifyTokenError", "Error verifying token", e)
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
+    }
+
+    private fun deleteImageProfile(imagePath: String, userID : String) {
+        val url = getString(R.string.url_server) + getString(R.string.api_delete_profile_image) + userID
+        val okHttpClient = OkHttpClient()
+
+        val formBody: RequestBody = FormBody.Builder()
+            .add("imagePath",imagePath)
+            .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .delete(formBody)
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if(response.isSuccessful){
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "false") {
+                val message = obj["message"].toString()
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun updateImageProfile(userID: String) {
+        val url = getString(R.string.url_server) + getString(R.string.api_update_profile_image) + userID
+        val okHttpClient = OkHttpClient()
+
+        val imageUri = imageUri ?: run {
+            Toast.makeText(requireContext(), "ไม่ได้เลือกรูปภาพ", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val file = File(imageUri.path!!)
+        val requestFile = file.asRequestBody("image/jpeg".toMediaType())
+        val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("Profile_Image", file.name, requestFile)
+            .build()
+
+        val request: Request = Request.Builder()
+            .url(url)
+            .put(requestBody)
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if (response.isSuccessful) {
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "true") {
+                Toast.makeText(requireContext(), "อัปโหดรูปภาพสำเร็จ", Toast.LENGTH_SHORT).show()
+                deleteImageProfile(imageName.toString(), userID)
+            }else{
+                val message = obj["message"].toString()
+                Toast.makeText(requireContext(), message , Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            Toast.makeText(requireContext(), "อัปโหดรูปภาพไม่สำเร็จ", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun signOutOAuth() {
+        auth = FirebaseAuth.getInstance()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+        googleSignInClient.signOut().addOnCompleteListener {
+            // Handle sign-out success or failure
+            if (it.isSuccessful) {
+                auth.signOut()
+                startActivity(Intent(activity, LoginActivity::class.java))
+                activity?.finish()
+            } else {
+                // Optionally, handle sign-out failure
+                Toast.makeText(requireContext(), "Sign-out failed", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

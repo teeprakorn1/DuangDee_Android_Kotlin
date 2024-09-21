@@ -1,19 +1,24 @@
 <resources>
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://192.168.1.104:3000/</string>
+    <string name="url_server">http://192.168.1.105:3000</string>
 
-    <string name="api_login">api/login</string>
-    <string name="api_login_uid">api/login-uid</string>
-    <string name="api_register">api/register</string>
-    <string name="api_register_uid">api/register-uid</string>
-    <string name="api_check_uid">api/check-uid</string>
-    <string name="api_check_email">api/check-email</string>
-    <string name="api_check_username">api/check-username</string>
-    <string name="api_request_register">api/request-register</string>
-    <string name="api_request_password">api/request-password</string>
-    <string name="api_reset_password">api/reset-password</string>
-    <string name="api_verify_otp">api/verify-otp</string>
-    <string name="api_verify_token">api/VerifyToken</string>
+    <string name="api_login">/api/login</string>
+    <string name="api_login_uid">/api/login-uid</string>
+    <string name="api_register">/api/register</string>
+    <string name="api_register_uid">/api/register-uid</string>
+    <string name="api_check_uid">/api/check-uid</string>
+    <string name="api_check_email">/api/check-email</string>
+    <string name="api_check_username">/api/check-username</string>
+    <string name="api_request_register">/api/request-register</string>
+    <string name="api_request_password">/api/request-password</string>
+    <string name="api_reset_password">/api/reset-password</string>
+    <string name="api_verify_otp">/api/verify-otp</string>
+    <string name="api_verify_token">/api/VerifyToken</string>
+    <string name="api_get_profile">/api/get-profile/</string>
+    <string name="api_update_profile">/api/update-profile/</string>
+    <string name="api_update_profile_image">/api/update-profile-image/</string>
+    <string name="api_delete_profile_image">/api/delete-profile-image/</string>
+
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>
     <string name="title_dashboard">สรุป</string>

@@ -62,4 +62,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
+    implementation (libs.imagepicker)
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
 }
