@@ -35,6 +35,9 @@ import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import java.io.File
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
@@ -91,7 +94,7 @@ class ProfileFragment : Fragment() {
             textLastName.text = usersLastName
             textPhone.text = usersPhone
             textGender.text = usersGender
-            textBrithDay.text = usersDateOfBirth
+            textBrithDay.text = dateFormat(usersDateOfBirth.toString())
         } else {
             startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()
@@ -123,9 +126,10 @@ class ProfileFragment : Fragment() {
         btnLogout.setOnClickListener {
             val regisTypeId = sharedPref.getString("regisTypeId", null)
             val decodeTypeID = regisTypeId?.let { decrypt(it, encryption.getKeyFromPreferences()) }
-            val editor = sharedPref.edit()
-            editor.clear()
-            editor.apply()
+            with(sharedPref.edit()) {
+                clear()
+                apply()
+            }
             signOutOAuth()
             if (decodeTypeID == "1"){
                 startActivity(Intent(activity, LoginActivity::class.java))
@@ -261,6 +265,17 @@ class ProfileFragment : Fragment() {
                 // Optionally, handle sign-out failure
                 Toast.makeText(requireContext(), "Sign-out failed", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun dateFormat(value : String): String{
+        if (value == "N/A" || value == "null"){
+            return value
+        }else{
+        val instant = Instant.parse(value)
+        val localDate = instant.atZone(ZoneId.of("Asia/Bangkok")).toLocalDate()
+        val formattedDate = localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        return formattedDate;
         }
     }
 }
