@@ -8,12 +8,24 @@
     android:background="@drawable/img_background"
     tools:context=".ui.profile.ProfileFragment">
 
+    <ImageView
+        android:id="@+id/imageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_bt_edit_img"
+        android:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/cardView" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
+        android:elevation="4dp"
         app:cardCornerRadius="120dp"
         app:cardBackgroundColor="@color/super_blank"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,16 +44,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
-
-    <ImageView
-        android:id="@+id/imageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_bt_edit_img"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="@+id/cardView" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -242,13 +244,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnEdit"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="50dp"
                     android:backgroundTint="@color/gold"
                     android:text="แก้ไขข้อมูล"
                     android:textStyle="bold"
@@ -258,10 +259,19 @@
                     android:id="@+id/btnLogout"
                     android:layout_width="150dp"
                     android:layout_height="55dp"
-                    android:backgroundTint="#570115"
+                    android:backgroundTint="#D80000"
                     android:text="ออกจากระบบ"
                     android:textStyle="bold"
                     app:cornerRadius="20dp" />
+                <TextView
+                    android:id="@+id/textcontact"
+                    android:layout_width="150dp"
+                    android:layout_height="55dp"
+                    android:gravity="center"
+                    android:text="@string/contact"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
