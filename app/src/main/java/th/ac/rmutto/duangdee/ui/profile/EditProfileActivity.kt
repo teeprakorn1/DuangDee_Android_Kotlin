@@ -18,7 +18,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -61,7 +61,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         val optionGender = arrayOf("โปรดเลือก", "ผู้ชาย", "ผู้หญิง", "อื่นๆ")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, optionGender)
+        val adapter = ArrayAdapter(this, R.layout.custom_spinner, optionGender)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 

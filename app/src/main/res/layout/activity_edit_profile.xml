@@ -258,10 +258,8 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="350dp"
-            android:layout_height="48dp"
+            style="@style/input_info"
             android:layout_marginTop="10dp"
-            android:background="@drawable/shape_drop"
             android:dropDownWidth="wrap_content"
             android:paddingHorizontal="15dp"
             />
