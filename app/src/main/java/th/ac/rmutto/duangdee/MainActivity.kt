@@ -24,7 +24,6 @@ import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.enc
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.generateKey
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var regisTypeId: String? = null
@@ -69,6 +68,9 @@ class MainActivity : AppCompatActivity() {
                         putString("usersUsernameOrUid", encryptionValue(usersUsernameOrUid!!))
                         apply() // or commit()
                     }
+
+                    // Call setupNavigation only when token verification is successful
+                    setupNavigation()
                 } else {
                     redirectToLogin()
                 }
@@ -80,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             redirectToLogin()
         }
     }
+
     private fun encryptionValue(value: String): String {
         val key = encryption.getKeyFromPreferences() ?: generateKey().also { encryption.saveKeyToPreferences(it) }
         return encrypt(value, key)
@@ -88,6 +91,29 @@ class MainActivity : AppCompatActivity() {
     private fun redirectToLogin() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish() // Call finish() to close the current activity
+    }
+
+    // Navigation setup function, called only after token verification
+    private fun setupNavigation() {
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle(R.string.app_name)
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+
+        val navView: BottomNavigationView = binding.navView
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_horoscope,
+                R.id.navigation_history,
+                R.id.navigation_profile
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,27 +133,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             redirectToLogin()
         }
-
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setTitle(R.string.app_name)
-        toolbar.setTitleTextColor(ContextCompat.getColor(this,R.color.white))
-        val navView: BottomNavigationView = binding.navView
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-                R.id.navigation_dashboard ,
-                R.id.navigation_horoscope,
-                R.id.navigation_history,
-                R.id.navigation_profile
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

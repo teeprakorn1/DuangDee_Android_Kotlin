@@ -1,60 +1,75 @@
 package th.ac.rmutto.duangdee.ui.horoscope
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HoroscopeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HoroscopeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var encryption: Encryption
+    private lateinit var userID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        encryption = Encryption(requireContext())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_horoscope, container, false)
+    ): View {
+        val view = inflater.inflate(R.layout.fragment_horoscope, container, false)
+
+        // Start Decryption SharedPreferences
+        val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val usersID = sharedPref.getString("usersID", null)
+
+        val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
+        if (decode != null) {
+            userID = decode
+        } else {
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
+
+        val imgBtZodiac = view.findViewById<ImageButton>(R.id.imgBtZodiac)
+
+        imgBtZodiac.setOnClickListener {
+            Toast.makeText(requireContext(), "Zodiac Button Clicked!", Toast.LENGTH_SHORT).show()
+            showDialog()
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HoroscopeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HoroscopeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun showDialog() {
+        // Inflate the dialog's custom layout
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.dialog_zodiac_check, null)
+
+        // Build an AlertDialog using the custom layout
+        val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogView)
+
+        // Create and show the dialog
+        val dialog = dialogBuilder.create()
+
+        // Find the OK button in the dialog layout and set an onClickListener
+        val buttonOk = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.buttonok)
+        buttonOk.setOnClickListener {
+            Toast.makeText(requireContext(), "OK Clicked!", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
