@@ -7,24 +7,33 @@
     android:background="@drawable/background_zodiac"
     android:orientation="horizontal"
     android:padding="4dp"
+    android:id="@+id/LinearLayout_Zodiac"
     android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="start"
-        app:cardCornerRadius="16dp"
-        android:layout_marginStart="10dp">
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/super_blank"
+        app:cardCornerRadius="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageViewFileZodiac"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:id="@+id/imageZodiac"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="6dp"
+            android:background="@drawable/shape_profile"
+            android:foregroundGravity="center"
+            android:src="@drawable/img_profile"
+            app:cardCornerRadius="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
 
 

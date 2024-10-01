@@ -57,13 +57,13 @@ class EditProfileActivity : AppCompatActivity() {
 
         encryption = Encryption(this)
         val decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
-        getProfile(decode)
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         val optionGender = arrayOf("โปรดเลือก", "ผู้ชาย", "ผู้หญิง", "อื่นๆ")
         val adapter = ArrayAdapter(this, R.layout.custom_spinner, optionGender)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+        getProfile(decode)
 
         val imageButton = findViewById<ImageButton>(R.id.imageButton)
         val saveBtn = findViewById<Button>(R.id.Save_Btn)

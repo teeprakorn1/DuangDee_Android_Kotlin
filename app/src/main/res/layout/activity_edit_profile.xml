@@ -145,7 +145,7 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/Layout_Birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

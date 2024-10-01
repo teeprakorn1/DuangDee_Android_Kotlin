@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
     <application
@@ -24,6 +25,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DuangDeeProject"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.horoscope.zodiac.ZodiacNextTotalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.horoscope.zodiac.ZodiacTotalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.horoscope.zodiac.ZodiacResultActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.login.SendPasswordActivity"
             android:exported="false" />
@@ -43,7 +53,7 @@
             android:name=".ui.register.RegisMailActivity"
             android:exported="false" />
         <activity
-            android:name="th.ac.rmutto.duangdee.ui.profile.EditProfileActivity"
+            android:name=".ui.profile.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisUserActivity"
@@ -52,19 +62,17 @@
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="MainActivity"
-            android:exported="true" >
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoadingActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

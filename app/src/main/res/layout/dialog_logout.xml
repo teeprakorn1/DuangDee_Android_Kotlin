@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app = "http://schemas.android.com/apk/res-auto"
-
-
-    >
+    android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_dialog"
->
+        >
 
         <TextView
             android:id="@+id/textviewshowmassege"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:text="คุณยังไม่ได้ระบุ วัน/เดือน/ปี เกิด"
+            android:layout_marginTop="30dp"
+            android:text="ยืนยันการออกจากระบบ"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -27,52 +25,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/line_regis_email"
+            android:layout_width="400dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textviewshowmassege"
+            app:srcCompat="@drawable/img_line_4" />
+
         <TextView
             android:id="@+id/textviewshowmassege1"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="40dp"
-            android:text="* กรุณากรอกข้อมูลของคุณ"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:text="* คุณต้องการออกจากระบบใช้หรือไม่?"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/backBtn"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/yesBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textviewshowmassege"
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/backBtn"
+            android:id="@+id/noBtn"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/cardview_dark_background"
-            android:text="กลับ"
+            android:text="ไม่ใช้"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editBtn"
+            app:layout_constraintEnd_toStartOf="@+id/yesBtn"
             app:layout_constraintStart_toStartOf="parent">
 
         </com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/editBtn"
-            android:layout_width="145dp"
+            android:id="@+id/yesBtn"
+            android:layout_width="130dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/gold"
-            android:text="แก้ไขข้อมูล"
+            android:backgroundTint="#D80000"
+            android:text="ใช้"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/backBtn">
+            app:layout_constraintStart_toEndOf="@+id/noBtn">
 
         </com.google.android.material.button.MaterialButton>
 

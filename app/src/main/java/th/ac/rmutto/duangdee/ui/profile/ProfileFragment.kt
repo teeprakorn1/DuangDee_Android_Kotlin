@@ -1,6 +1,7 @@
 package th.ac.rmutto.duangdee.ui.profile
 
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -124,19 +125,7 @@ class ProfileFragment : Fragment() {
         }
 
         btnLogout.setOnClickListener {
-            val regisTypeId = sharedPref.getString("regisTypeId", null)
-            val decodeTypeID = regisTypeId?.let { decrypt(it, encryption.getKeyFromPreferences()) }
-            with(sharedPref.edit()) {
-                clear()
-                apply()
-            }
-            signOutOAuth()
-            if (decodeTypeID == "1"){
-                startActivity(Intent(activity, LoginActivity::class.java))
-                activity?.finish()
-            }else if(decodeTypeID == "2"){
-                signOutOAuth()
-            }
+            dialogLogout()
         }
 
         btnEdit.setOnClickListener {
@@ -277,5 +266,37 @@ class ProfileFragment : Fragment() {
         val formattedDate = localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         return formattedDate;
         }
+    }
+
+    private fun dialogLogout() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_logout, null)
+        val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogView)
+        val dialog = dialogBuilder.create()
+
+        val yesBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.yesBtn)
+        val noBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.noBtn)
+
+        yesBtn.setOnClickListener {
+            val regisTypeId = sharedPref.getString("regisTypeId", null)
+            val decodeTypeID = regisTypeId?.let { decrypt(it, encryption.getKeyFromPreferences()) }
+            with(sharedPref.edit()) {
+                clear()
+                apply()
+            }
+            signOutOAuth()
+            if (decodeTypeID == "1"){
+                startActivity(Intent(activity, LoginActivity::class.java))
+                activity?.finish()
+            }else if(decodeTypeID == "2"){
+                signOutOAuth()
+            }
+            dialog.dismiss()
+        }
+
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }

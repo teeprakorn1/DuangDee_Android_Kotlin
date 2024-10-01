@@ -1,12 +1,14 @@
 package th.ac.rmutto.duangdee.ui.login
 
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -69,10 +71,12 @@ class LoginActivity : AppCompatActivity() {
         val forgotPassword = findViewById<TextView>(R.id.TextForgotPassword_Btn)
 
         buttonLoginGoogle.setOnClickListener {
+            loadingDialog()
             signIn()
         }
 
         buttonLogin.setOnClickListener {
+            loadingDialog()
             encryption = Encryption(this)
             val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
             val username = editTextUsername.text.toString()
@@ -309,4 +313,13 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun loadingDialog(){
+        val loadingDialog = Dialog(this)
+        loadingDialog.setContentView(R.layout.diaglog_loading)
+        loadingDialog.window!!.setLayout(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        loadingDialog.show()
+    }
 }
