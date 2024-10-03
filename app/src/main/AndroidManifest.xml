@@ -26,6 +26,15 @@
         android:theme="@style/Theme.DuangDeeProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.horoscope.tarot.TarotActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.horoscope.zodiac.ZodiacNextTotalActivity"
             android:exported="false" />
         <activity
@@ -63,12 +72,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".LoadingActivity"

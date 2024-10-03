@@ -68,4 +68,20 @@
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/shape_button</item>
     </style>
+    <style name="Theme.DuangDeeProject.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.DuangDeeProject.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.DuangDeeProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="tarot_card">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/img_duangdee_card</item>
+    </style>
 </resources>

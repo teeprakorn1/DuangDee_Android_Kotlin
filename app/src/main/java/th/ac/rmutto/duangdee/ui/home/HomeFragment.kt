@@ -151,6 +151,7 @@ class HomeFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_zodiac_check, null)
         val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogView)
         val dialog = dialogBuilder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         // Find the OK button in the dialog layout and set an onClickListener
         val editBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.editBtn)
