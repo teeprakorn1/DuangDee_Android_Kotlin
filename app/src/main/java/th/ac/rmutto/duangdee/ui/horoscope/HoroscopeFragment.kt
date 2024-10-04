@@ -19,6 +19,7 @@ import org.json.JSONObject
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.horoscope.tarot.TarotActivity
 import th.ac.rmutto.duangdee.ui.horoscope.zodiac.ZodiacResultActivity
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import th.ac.rmutto.duangdee.ui.profile.EditProfileActivity
@@ -42,6 +43,7 @@ class HoroscopeFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_horoscope, container, false)
         val imgBtZodiac = view.findViewById<ImageButton>(R.id.imgBtZodiac)
+        val imgBtTarot = view.findViewById<ImageButton>(R.id.imgBtTarot)
 
         imgBtZodiac.setOnClickListener {
             userID = getUserId()
@@ -67,7 +69,7 @@ class HoroscopeFragment : Fragment() {
                         val zodiacID = obj["Zodiac_ID"].toString()
                         val intent = Intent(activity, ZodiacResultActivity::class.java)
                         intent.putExtra("zodiacID", zodiacID)
-                        intent.putExtra("page_type","Home")
+                        intent.putExtra("page_type","Horoscope")
                         startActivity(intent)
                         activity?.finish()
                     }else{
@@ -78,6 +80,12 @@ class HoroscopeFragment : Fragment() {
                     Toast.makeText(requireContext(), "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+
+        imgBtTarot.setOnClickListener {
+            val intent = Intent(activity, TarotActivity::class.java)
+            intent.putExtra("page_type","Horoscope")
+            activity?.finish()
         }
         return view
     }
