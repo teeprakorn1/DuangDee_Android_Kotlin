@@ -40,6 +40,7 @@
                 android:id="@+id/textView"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/giraffe_font"
                 android:text="ยืนยันบัญชีของคุณ"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -59,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="* ช่องทางการรับรหัส OTP"
+            android:fontFamily="@font/giraffe_font"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -99,18 +101,20 @@
                 android:id="@+id/Back_Btn"
                 style="@style/button_black"
                 android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_marginEnd="25dp"
+                android:fontFamily="@font/giraffe_font"
                 android:backgroundTint="@color/cardview_dark_background"
                 android:text="@string/bt_back"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/Confirm_Btn"
                 style="@style/button_gold"
                 android:layout_width="120dp"
+                android:fontFamily="@font/giraffe_font"
                 android:layout_height="50dp"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:text="@string/bt_confirm" />
 
         </LinearLayout>

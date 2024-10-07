@@ -24,11 +24,12 @@
         <TextView
             android:id="@+id/txt_regis_create_email"
             android:layout_width="match_parent"
+            android:fontFamily="@font/giraffe_font"
             android:layout_height="wrap_content"
             android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -52,6 +53,7 @@
             android:id="@+id/txt_regis_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="10dp"
             android:text="@string/title_displayname"
             android:textColor="@color/white"
@@ -301,8 +303,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/giraffe_font"
         android:text="@string/bt_back"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />
 
@@ -313,7 +316,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:textSize="18sp"
+        android:fontFamily="@font/giraffe_font"
+        android:textSize="20sp"
         android:text="@string/bt_save"
         app:layout_constraintStart_toEndOf="@+id/Back_Btn"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />

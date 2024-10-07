@@ -43,6 +43,7 @@
                 android:id="@+id/txt_ResetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/giraffe_font"
                 android:text="กรอกรหัส OTP "
                 android:textColor="@color/white"
                 android:textSize="28sp"
@@ -61,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
+            android:fontFamily="@font/giraffe_font"
             android:text="ของคุณเพื่อลงชื่อเข้าใช้"
             android:textColor="@color/white"
             android:textSize="28sp"
@@ -80,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="Enter OTP code"
+                android:fontFamily="@font/giraffe_font"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -206,12 +209,14 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
             android:text="Resend OTP code"
+            android:fontFamily="@font/giraffe_font"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
         <Button
             android:id="@+id/confirmotp_btn"
             style="@style/button_gold"
+            android:fontFamily="@font/giraffe_font"
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/gold"
             android:text="@string/bt_confirm_otp"

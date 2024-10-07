@@ -273,6 +273,7 @@ class ProfileFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogView)
         val dialog = dialogBuilder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val yesBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.yesBtn)
         val noBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.noBtn)

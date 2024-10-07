@@ -83,8 +83,7 @@ class HoroscopeFragment : Fragment() {
         }
 
         imgBtTarot.setOnClickListener {
-            val intent = Intent(activity, TarotActivity::class.java)
-            intent.putExtra("page_type","Horoscope")
+            startActivity(Intent(activity, TarotActivity::class.java))
             activity?.finish()
         }
         return view

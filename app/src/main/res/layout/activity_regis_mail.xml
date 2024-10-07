@@ -28,7 +28,8 @@
             android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="28sp"
+            android:fontFamily="@font/giraffe_font"
             android:textStyle="bold" />
 
         <ImageView
@@ -83,6 +84,8 @@
         style="@style/button_gold"
         android:layout_marginBottom="70dp"
         android:text="@string/bt_next"
+        android:textSize="20dp"
+        android:fontFamily="@font/giraffe_font"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

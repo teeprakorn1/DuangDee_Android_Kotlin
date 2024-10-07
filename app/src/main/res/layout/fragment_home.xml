@@ -20,6 +20,7 @@
         android:id="@+id/textNameApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/giraffe_font"
         android:gravity="center"
         android:text="@string/app_name"
         android:textAlignment="center"

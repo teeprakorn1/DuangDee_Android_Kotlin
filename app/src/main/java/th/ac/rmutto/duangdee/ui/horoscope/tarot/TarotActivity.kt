@@ -1,6 +1,7 @@
 package th.ac.rmutto.duangdee.ui.horoscope.tarot
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 //ขนาดไพ่ 968*1615 120dp 200dp
 class TarotActivity : AppCompatActivity() {

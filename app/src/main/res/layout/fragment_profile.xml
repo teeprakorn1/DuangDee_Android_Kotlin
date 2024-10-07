@@ -8,271 +8,283 @@
     android:background="@drawable/img_background"
     tools:context=".ui.profile.ProfileFragment">
 
-    <ImageView
-        android:id="@+id/imageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_bt_edit_img"
-        android:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="@+id/cardView" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:elevation="4dp"
-        app:cardCornerRadius="120dp"
-        app:cardBackgroundColor="@color/super_blank"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageProfile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/shape_profile"
-            app:cardCornerRadius="120dp"
-            android:foregroundGravity="center"
-            android:src="@drawable/img_profile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/shape_otp1"
-            android:orientation="vertical">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textDisplayName"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Displayname :"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-
-                <TextView
-                    android:id="@+id/ResultDisplayname"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1.5"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textFirstName"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Firstname :"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ResultFirstname"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1.5"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textLastName"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Lastname :"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ResultLastname"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1.5"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textBrithDay"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="BrithDay :"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ResultBrithDay"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1.5"
-                    android:textSize="18sp"
-                    android:text="" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textGender"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Gender :"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ResultGender"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textPhone"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Phone : "
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ResultPhone"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-        </LinearLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:elevation="4dp"
+                app:cardBackgroundColor="@color/super_blank"
+                app:cardCornerRadius="120dp">
+
+                <ImageView
+                    android:id="@+id/imageProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_profile"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/img_profile"
+                    app:cardCornerRadius="120dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="6dp"
+                    android:src="@drawable/img_bt_edit_img" />
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnEdit"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/gold"
-                    android:text="แก้ไขข้อมูล"
-                    android:textStyle="bold"
-                    app:cornerRadius="20dp" />
+                <LinearLayout
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_otp1"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnLogout"
-                    android:layout_width="150dp"
-                    android:layout_height="55dp"
-                    android:backgroundTint="#D80000"
-                    android:text="ออกจากระบบ"
-                    android:textStyle="bold"
-                    app:cornerRadius="20dp" />
-                <TextView
-                    android:id="@+id/textcontact"
-                    android:layout_width="150dp"
-                    android:layout_height="55dp"
-                    android:gravity="center"
-                    android:text="@string/contact"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textDisplayName"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ชื่อบัญชี :"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+
+
+                        <TextView
+                            android:id="@+id/ResultDisplayname"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textFirstName"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ชื่อจริง  :"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/ResultFirstname"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textLastName"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="นามสกุล  :"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/ResultLastname"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textBrithDay"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="วันเกิด  :"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/ResultBrithDay"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textGender"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="เพศสภาพ :"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/ResultGender"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textPhone"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="เบอร์โทร : "
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/ResultPhone"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btnEdit"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/gold"
+                            android:text="แก้ไขข้อมูล"
+                            android:fontFamily="@font/giraffe_font"
+                            android:textStyle="bold"
+                            app:cornerRadius="24dp" />
+
+                        <Button
+                            android:id="@+id/btnLogout"
+                            android:layout_width="150dp"
+                            android:layout_height="55dp"
+                            android:backgroundTint="#D80000"
+                            android:fontFamily="@font/giraffe_font"
+                            android:text="ออกจากระบบ"
+                            android:textStyle="bold"
+                            app:cornerRadius="24dp" />
+
+                        <TextView
+                            android:id="@+id/textcontact"
+                            android:layout_width="150dp"
+                            android:layout_height="55dp"
+                            android:gravity="center"
+                            android:text="@string/contact"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

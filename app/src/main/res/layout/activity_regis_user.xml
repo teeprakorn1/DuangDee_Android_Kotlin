@@ -26,10 +26,11 @@
             android:id="@+id/txt_regis_create_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/giraffe_font"
             android:text="@string/title_create_account"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -64,6 +65,7 @@
             android:id="@+id/editTextRegisUsername"
             style="@style/input_info"
             android:layout_marginTop="10dp"
+
             android:autofillHints="@string/title_username"
             android:hint="@string/title_username"
             android:inputType="text"/>
@@ -132,6 +134,8 @@
         style="@style/button_gold"
         android:layout_marginBottom="70dp"
         android:text="@string/bt_next"
+        android:fontFamily="@font/giraffe_font"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

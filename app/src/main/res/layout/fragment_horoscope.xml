@@ -7,36 +7,46 @@
     android:background="@drawable/img_background"
     tools:context=".ui.horoscope.HoroscopeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/imgBtZodiac"
-            android:layout_width="400dp"
-            android:layout_height="170dp"
-            android:background="@drawable/img_horo_zodiac" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imgBtHand"
-            android:layout_width="400dp"
-            android:layout_height="170dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/img_horo_hand" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imgBtTarot"
-            android:layout_width="400dp"
-            android:layout_height="170dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/img_horo_tarot" />
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/imgBtZodiac"
+                    android:layout_width="400dp"
+                    android:layout_height="170dp"
+                    android:background="@drawable/img_horo_zodiac" />
+
+                <ImageButton
+                    android:id="@+id/imgBtHand"
+                    android:layout_width="400dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/img_horo_hand" />
+
+                <ImageButton
+                    android:id="@+id/imgBtTarot"
+                    android:layout_width="400dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/img_horo_tarot" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

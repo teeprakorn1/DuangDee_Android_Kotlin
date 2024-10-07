@@ -91,8 +91,7 @@ class HomeFragment : Fragment() {
         }
 
         btTarot.setOnClickListener {
-            val intent = Intent(activity, TarotActivity::class.java)
-            intent.putExtra("page_type","Home")
+            startActivity(Intent(activity, TarotActivity::class.java))
             activity?.finish()
         }
 

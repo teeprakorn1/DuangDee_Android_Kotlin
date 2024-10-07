@@ -51,6 +51,7 @@
             android:layout_marginTop="12dp"
             android:text="ราศีมังกร"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -59,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
             android:layout_marginTop="12dp"
             android:text="ผู้ที่เกิดวันที่ ๑๔ ม.ค. - ๑๒ ก.พ."
             android:textAlignment="center"
