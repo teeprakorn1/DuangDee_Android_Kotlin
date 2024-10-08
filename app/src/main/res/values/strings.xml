@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://192.168.103.34:3000</string>
+    <string name="url_server">http://192.168.103.95:3000</string>
 
     <string name="api_login">/api/login</string>
     <string name="api_login_uid">/api/login-uid</string>
@@ -20,6 +20,9 @@
     <string name="api_delete_profile_image">/api/delete-profile-image/</string>
     <string name="api_check_zodiac">/api/check-zodiac</string>
     <string name="api_get_zodiac">/api/get-zodiac/</string>
+    <string name="api_get_card">/api/get-card/</string>
+    <string name="api_get_count_card">/api/get-count-card</string>
+    <string name="api_playcard">/api/add-playcard</string>
 
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>

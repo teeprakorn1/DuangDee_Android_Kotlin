@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_dialog"
+        >
+
+        <TextView
+            android:id="@+id/textviewshowmassege"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/giraffe_font"
+            android:text="ยืนยันการยอมรับคำทำนาย"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/line_regis_email"
+            android:layout_width="400dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textviewshowmassege"
+            app:srcCompat="@drawable/img_line_4" />
+
+        <TextView
+            android:id="@+id/textviewshowmassege1"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:text="การยอมรับคำทำนายจะมีการเก็บบันทึกข้อมูลการเล่นของคุณ และวันนี้คุณจะเล่นการทำนายไพ่ไม่ได้อีกแล้ว"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/yesBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textviewshowmassege"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textviewshowmassege2"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:text="* คุณต้องการยืนยันการยอมรับคำทำนายใช่หรือไม่?"
+            android:textAlignment="center"
+            android:textColor="#F8CA58"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/yesBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textviewshowmassege1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/noBtn"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:text="ไม่ใช่"
+            android:fontFamily="@font/giraffe_font"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/yesBtn"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/yesBtn"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="#D80000"
+            android:fontFamily="@font/giraffe_font"
+            android:text="ใช่"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/noBtn">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -71,12 +71,12 @@ class LoginActivity : AppCompatActivity() {
         val forgotPassword = findViewById<TextView>(R.id.TextForgotPassword_Btn)
 
         buttonLoginGoogle.setOnClickListener {
-            loadingDialog()
+//            loadingDialog()
             signIn()
         }
 
         buttonLogin.setOnClickListener {
-            loadingDialog()
+//            loadingDialog()
             encryption = Encryption(this)
             val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
             val username = editTextUsername.text.toString()
