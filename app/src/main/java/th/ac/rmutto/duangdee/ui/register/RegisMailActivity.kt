@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -18,6 +19,7 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 import th.ac.rmutto.duangdee.PrivacyPolicyActivity
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 class RegisMailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +36,11 @@ class RegisMailActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
 
         val nextButton = findViewById<Button>(R.id.Next_Btn);
+        val bt_Back = findViewById<Button>(R.id.bt_back);
         val privacyPolicy = findViewById<TextView>(R.id.txt_PrivacyPolicy);
         val editTextRegisEmail = findViewById<EditText>(R.id.editTextRegisEmail)
+        val checkBoxPolicy = findViewById<CheckBox>(R.id.checkBoxPolicy)
+        val checkBoxAge = findViewById<CheckBox>(R.id.checkBoxAge)
 
         nextButton.setOnClickListener{
             //Check email
@@ -54,6 +59,12 @@ class RegisMailActivity : AppCompatActivity() {
                 return@setOnClickListener
             }else if(emailEdt.length > 30){
                 editTextRegisEmail.error = "Please enter a valid email."
+                return@setOnClickListener
+            }else if(checkBoxAge.isChecked == false){
+                Toast.makeText(applicationContext, "Please check age.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }else if(checkBoxPolicy.isChecked == false) {
+                Toast.makeText(applicationContext, "Please check", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
@@ -87,6 +98,12 @@ class RegisMailActivity : AppCompatActivity() {
         privacyPolicy.setOnClickListener {
             val intent = Intent(this, PrivacyPolicyActivity::class.java)
             startActivity(intent)
+        }
+
+        bt_Back.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

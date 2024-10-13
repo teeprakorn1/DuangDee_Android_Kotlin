@@ -48,13 +48,19 @@ class ZodiacTotalActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.app_name)
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
 
-        val imageNext = findViewById<ImageView>(R.id.image_next)
+        val btNext = findViewById<ImageView>(R.id.image_next)
+        val btBack = findViewById<ImageView>(R.id.bt_back)
 
         // Show the data list
         showDataList()
 
-        imageNext.setOnClickListener {
+        btNext.setOnClickListener {
             val intent = Intent(this, ZodiacNextTotalActivity::class.java)
+            startActivity(intent)
+        }
+
+        btBack.setOnClickListener {
+            val intent = Intent(this, ZodiacResultActivity::class.java)
             startActivity(intent)
         }
     }

@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/giraffe_font</item>
     </style>
     <style name="input_info">
         <item name="android:textColor">@color/white</item>

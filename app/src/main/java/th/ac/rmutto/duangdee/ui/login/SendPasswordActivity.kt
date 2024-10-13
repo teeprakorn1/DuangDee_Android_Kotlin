@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,7 @@ class SendPasswordActivity : AppCompatActivity() {
 
         val sendEmailButton = findViewById<Button>(R.id.SendEmail_btn);
         val emailEditText = findViewById<EditText>(R.id.editText_EmailAddress);
+        val bt_Back = findViewById<ImageView>(R.id.bt_back);
 
         sendEmailButton.setOnClickListener {
             val emailEdt = emailEditText.text.toString()
@@ -64,7 +66,12 @@ class SendPasswordActivity : AppCompatActivity() {
             intent.putExtra("page_type","ResetPassword")
             startActivity(intent)
             finish()
+        }
 
+        bt_Back.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -129,16 +129,34 @@
             android:inputType="textPassword"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/Next_Btn"
-        style="@style/button_gold"
-        android:layout_marginBottom="70dp"
-        android:text="@string/bt_next"
-        android:fontFamily="@font/giraffe_font"
-        android:textSize="20dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/bt_back"
+            style="@style/button_dark"
+            android:layout_width="120dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/giraffe_font"
+            android:text="@string/bt_back"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/Next_Btn"
+            style="@style/button_gold"
+            android:layout_width="120dp"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/giraffe_font"
+            android:text="@string/bt_next"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

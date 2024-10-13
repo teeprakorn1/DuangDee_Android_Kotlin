@@ -60,6 +60,6 @@
         android:backgroundTint="#FFB300"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icon_next" />
+        app:srcCompat="@drawable/img_bt_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

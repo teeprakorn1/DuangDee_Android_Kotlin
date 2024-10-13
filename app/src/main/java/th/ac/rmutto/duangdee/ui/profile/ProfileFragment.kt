@@ -34,6 +34,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.contact.ContactActivity
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import java.io.File
 import java.time.Instant
@@ -81,6 +82,7 @@ class ProfileFragment : Fragment() {
 
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         val btnEdit = view.findViewById<Button>(R.id.btnEdit)
+        val textContact = view.findViewById<TextView>(R.id.textcontact)
 
         // Start Decryption SharedPreferences
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
@@ -133,6 +135,10 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        textContact.setOnClickListener{
+            val intent = Intent(requireActivity(), ContactActivity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 

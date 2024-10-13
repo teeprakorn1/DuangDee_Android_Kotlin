@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -42,6 +43,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         }
 
         val confirmButton = findViewById<Button>(R.id.Confirm_Password_Btn);
+        val bt_Back = findViewById<ImageView>(R.id.bt_back);
         val editTextPassword = findViewById<EditText>(R.id.editText_Password);
         val editTextConfirmPassword = findViewById<EditText>(R.id.editText_confirmPassword);
 
@@ -91,6 +93,12 @@ class ResetPasswordActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
             }
+        }
+
+        bt_Back.setOnClickListener {
+            val intent = Intent(this, SendPasswordActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

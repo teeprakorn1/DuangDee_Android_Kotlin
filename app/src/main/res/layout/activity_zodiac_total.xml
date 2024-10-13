@@ -8,6 +8,17 @@
     android:background="@drawable/bg1"
     tools:context=".ui.horoscope.zodiac.ZodiacTotalActivity">
 
+    <ImageView
+        android:id="@+id/bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FFB300"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_bt_back" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -61,6 +72,6 @@
         android:backgroundTint="#FFB300"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/icon_back" />
+        app:srcCompat="@drawable/img_bt_next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

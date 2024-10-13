@@ -12,7 +12,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.ui.horoscope.HoroscopeFragment
+import th.ac.rmutto.duangdee.ui.horoscope.zodiac.ZodiacTotalActivity
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 //ขนาดไพ่ 968*1615 120dp 200dp
@@ -37,6 +40,7 @@ class TarotActivity : AppCompatActivity() {
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
 
         val btPredict = findViewById<Button>(R.id.bt_predict)
+        val btBack = findViewById<ImageView>(R.id.bt_back)
 
         val tarot1 = findViewById<ImageView>(R.id.imagetarot1)
         val tarot2 = findViewById<ImageView>(R.id.imagetarot2)
@@ -126,6 +130,14 @@ class TarotActivity : AppCompatActivity() {
                 dialogWarning()
             }
 
+        }
+
+        val pageType = intent.getStringExtra("page_type")
+
+        btBack.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
         }
 
     }

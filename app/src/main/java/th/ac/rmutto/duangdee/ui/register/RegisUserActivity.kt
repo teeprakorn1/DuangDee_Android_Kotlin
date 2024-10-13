@@ -36,6 +36,7 @@ class RegisUserActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email")
 
         val nextButton = findViewById<Button>(R.id.Next_Btn);
+        val bt_Back = findViewById<Button>(R.id.bt_back);
         val editTextUsername = findViewById<EditText>(R.id.editTextRegisUsername);
         val editTextPassword = findViewById<EditText>(R.id.editTextRegisPassword);
         val editTextConfirmPassword = findViewById<EditText>(R.id.editTextRegisConfirmPassword);
@@ -91,6 +92,12 @@ class RegisUserActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
                 }
             }
+        }
+
+        bt_Back.setOnClickListener {
+            val intent = Intent(this, RegisMailActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -3,6 +3,8 @@ package th.ac.rmutto.duangdee.ui.otp
 import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -52,6 +54,13 @@ class AcceptOtpActivity : AppCompatActivity() {
         val editTextOTP4 = findViewById<EditText>(R.id.editTextOTP4);
         val editTextOTP5 = findViewById<EditText>(R.id.editTextOTP5);
         val editTextOTP6 = findViewById<EditText>(R.id.editTextOTP6);
+
+        editTextOTP1.addTextChangedListener(CustomTextWatcher(editTextOTP1, editTextOTP2))
+        editTextOTP2.addTextChangedListener(CustomTextWatcher(editTextOTP2, editTextOTP3))
+        editTextOTP3.addTextChangedListener(CustomTextWatcher(editTextOTP3, editTextOTP4))
+        editTextOTP4.addTextChangedListener(CustomTextWatcher(editTextOTP4, editTextOTP5))
+        editTextOTP5.addTextChangedListener(CustomTextWatcher(editTextOTP5, editTextOTP6))
+        editTextOTP6.addTextChangedListener(CustomTextWatcher(editTextOTP6, null))
 
         confirmButton.setOnClickListener {
             val otp = editTextOTP1.text.toString() + editTextOTP2.text.toString() +
@@ -236,6 +245,27 @@ class AcceptOtpActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "เกิดข้อผิดพลาด", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+        }
+    }
+
+    private class CustomTextWatcher(
+        private val currentEditText: EditText,
+        private val nextEditText: EditText?
+    ) :
+        TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            // ไม่ต้องทำอะไร
+        }
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            // ถ้ากรอกครบ 1 ตัวอักษร ให้เลื่อนโฟกัสไปยัง EditText ถัดไป
+            if (currentEditText.text.toString().length == 1 && nextEditText != null) {
+                nextEditText.requestFocus()
+            }
+        }
+
+        override fun afterTextChanged(s: Editable) {
+            // ไม่ต้องทำอะไร
         }
     }
 
