@@ -182,12 +182,10 @@
 
     <Button
         android:id="@+id/bt_back"
-        style="@style/button_gold"
-        android:theme="@style/button_gold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/button_dark"
+        android:theme="@style/button_dark"
         android:layout_marginBottom="80dp"
-        android:text="กลับ"
+        android:text="@string/bt_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -120,7 +120,7 @@ class ZodiacNextTotalActivity : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view: View = LayoutInflater.from(parent.context).inflate(
-                R.layout.menu_zodiac,
+                R.layout.view_menu_zodiac,
                 parent, false
             )
             return ViewHolder(view)

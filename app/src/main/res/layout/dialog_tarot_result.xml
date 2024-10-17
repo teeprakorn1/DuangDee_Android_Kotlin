@@ -155,12 +155,10 @@
                 android:id="@+id/btAccept"
                 style="@style/button_gold"
                 android:layout_width="250dp"
-                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="ยอมรับคำทำนาย"
-                android:textSize="20sp" />
+                android:text="ยอมรับคำทำนาย"/>
 
         </LinearLayout>
 

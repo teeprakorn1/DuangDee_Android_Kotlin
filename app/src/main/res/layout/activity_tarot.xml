@@ -64,6 +64,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -91,6 +93,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -119,6 +123,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -147,6 +153,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -185,7 +193,7 @@
                         android:text="เลือกเพียง 1 ใบเพื่อดูคำทำนาย"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
             </ScrollView>
@@ -194,17 +202,13 @@
                 android:id="@+id/bt_predict"
                 style="@style/button_gold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/gold"
+                android:layout_marginBottom="40dp"
                 android:fontFamily="@font/giraffe_font"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="ทำนาย"
-                android:textSize="24sp" />
+                android:text="ทำนาย" />
         </LinearLayout>
     </ScrollView>
 

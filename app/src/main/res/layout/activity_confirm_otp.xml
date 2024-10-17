@@ -9,10 +9,8 @@
     tools:context=".ui.otp.ConfirmOtpActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_otp1"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="60dp"
             android:gravity="center">
 
             <ImageView
@@ -58,7 +56,7 @@
             android:id="@+id/textView2"
             android:layout_width="334dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="* ช่องทางการรับรหัส OTP"
             android:fontFamily="@font/giraffe_font"
             android:textColor="@color/white"
@@ -89,32 +87,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="375dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/Back_Btn"
-                style="@style/button_black"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
+                style="@style/button_dark"
                 android:layout_marginEnd="25dp"
-                android:fontFamily="@font/giraffe_font"
-                android:backgroundTint="@color/cardview_dark_background"
-                android:text="@string/bt_back"
-                android:textSize="20sp" />
+                android:text="@string/bt_back" />
 
             <Button
                 android:id="@+id/Confirm_Btn"
                 style="@style/button_gold"
-                android:layout_width="120dp"
-                android:fontFamily="@font/giraffe_font"
-                android:layout_height="50dp"
-                android:textSize="20sp"
                 android:text="@string/bt_confirm" />
 
         </LinearLayout>

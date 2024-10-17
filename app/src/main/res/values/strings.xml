@@ -52,6 +52,7 @@
     <string name="title_Forgot">Forgot password?</string>
     <string name="title_not_account">Don\'t have account?</string>
     <string name="title_create_account">สร้างบัญชีของคุณ</string>
+    <string name="title_edit_profile">แก้ไขบัญชีของคุณ</string>
 
     <string name="txt_email">E-mail :</string>
     <string name="txt_password">Password :</string>

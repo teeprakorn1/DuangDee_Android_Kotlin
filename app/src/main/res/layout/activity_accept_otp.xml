@@ -10,16 +10,13 @@
     tools:context=".ui.otp.AcceptOtpActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_otp1"
         android:gravity="center"
         android:orientation="vertical"
         android:radius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="60dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -81,8 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Enter OTP code"
                 android:fontFamily="@font/giraffe_font"
+                android:text="Enter OTP code"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -208,20 +205,19 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
-            android:text="Resend OTP code"
             android:fontFamily="@font/giraffe_font"
+            android:text="Resend OTP code"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
         <Button
             android:id="@+id/confirmotp_btn"
             style="@style/button_gold"
+            android:layout_width="180dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="60dp"
             android:fontFamily="@font/giraffe_font"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/gold"
-            android:text="@string/bt_confirm_otp"
-            app:cornerRadius="20dp"
-            />
+            android:text="@string/bt_confirm_otp" />
 
 
     </LinearLayout>

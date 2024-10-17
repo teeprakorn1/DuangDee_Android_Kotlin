@@ -180,17 +180,14 @@
             android:id="@+id/backBtn"
             style="@style/button_dark"
             android:layout_width="130dp"
-            android:layout_height="60dp"
             android:text="กลับ" />
 
         <Button
             android:id="@+id/showZodiacBtn"
             style="@style/button_gold"
             android:layout_width="130dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
-            android:text="ดูราศีอื่น"
-            android:textSize="20sp" />
+            android:layout_marginStart="25dp"
+            android:text="ดูราศีอื่น" />
 
     </LinearLayout>
 

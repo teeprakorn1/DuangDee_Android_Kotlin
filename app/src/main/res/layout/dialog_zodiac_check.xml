@@ -47,15 +47,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/backBtn"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            style="@style/button_blank"
             android:layout_marginBottom="35dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:fontFamily="@font/giraffe_font"
-            android:text="กลับ"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:text="@string/bt_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editBtn"
             app:layout_constraintStart_toStartOf="parent">
@@ -64,15 +59,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/editBtn"
-            android:layout_width="145dp"
-            android:layout_height="60dp"
+            style="@style/button_gold"
             android:layout_marginBottom="35dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/gold"
-            android:fontFamily="@font/giraffe_font"
             android:text="แก้ไขข้อมูล"
-            android:textColor="@color/white"
-            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/backBtn">

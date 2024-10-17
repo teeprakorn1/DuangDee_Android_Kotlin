@@ -10,317 +10,309 @@
     tools:context=".ui.profile.EditProfileActivity">
 
 
-    <LinearLayout
-        android:id="@+id/layout_head_regis_name"
-        android:layout_width="244dp"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txt_regis_create_email"
-            android:layout_width="match_parent"
-            android:fontFamily="@font/giraffe_font"
-            android:layout_height="wrap_content"
-            android:text="@string/title_create_account"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/line_regis_email"
-            android:layout_width="match_parent"
-            android:layout_height="1.1dp"
-            app:srcCompat="@drawable/img_line_4" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_DisplayName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_head_regis_name">
-
-        <TextView
-            android:id="@+id/txt_regis_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            android:text="@string/title_displayname"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editTextRegisName"
-            style="@style/input_info"
-            android:autofillHints="@string/title_displayname"
-            android:hint="@string/title_displayname"
-            android:inputType="text" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layout_FirstName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_DisplayName">
-
-        <TextView
-            android:id="@+id/txt_FirstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/txt_name"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText_FirstName"
-            style="@style/input_info"
-            android:autofillHints="@string/title_firstname"
-            android:hint="@string/title_firstname"
-            android:inputType="text" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_FirstName">
-
-        <TextView
-            android:id="@+id/txt_regis_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/title_lastname"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editTextRegisSurname"
-            style="@style/input_info"
-            android:layout_marginTop="10dp"
-            android:hint="@string/title_lastname"
-            android:inputType="text" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_dateofbirth"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_surname">
-
-        <TextView
-            android:id="@+id/txt_regis_dateofbirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/txt_dateofbirth"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
         <LinearLayout
-            android:id="@+id/Layout_Birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextRegisDay"
-                android:layout_width="80dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_day"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_day"
-                android:inputType="none"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:focusable="false"
-                android:clickable="true" />
+            <LinearLayout
+                android:id="@+id/layout_head_regis_name"
+                android:layout_width="244dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:textAlignment="textEnd">
 
-            <TextView
-                android:id="@+id/slad1"
+                <TextView
+                    android:id="@+id/txt_regis_create_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/giraffe_font"
+                    android:text="@string/title_edit_profile"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/line_regis_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.1dp"
+                    app:srcCompat="@drawable/img_line_4" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_DisplayName"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_regis_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:text="@string/title_displayname"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextRegisName"
+                    style="@style/input_info"
+                    android:autofillHints="@string/title_displayname"
+                    android:hint="@string/title_displayname"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_FirstName"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_FirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editText_FirstName"
+                    style="@style/input_info"
+                    android:autofillHints="@string/title_firstname"
+                    android:hint="@string/title_firstname"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_surname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:text="/"
-                android:textColor="@color/white"
-                android:textSize="28sp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextRegisMonth"
-                android:layout_width="75dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_month"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_month"
-                android:inputType="none"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:focusable="false"
-                android:clickable="true" />
+                <TextView
+                    android:id="@+id/txt_regis_surname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/title_lastname"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/slad2"
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextRegisSurname"
+                    style="@style/input_info"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/title_lastname"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dateofbirth"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:text="/"
-                android:textColor="@color/white"
-                android:textSize="28sp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextRegisYear"
-                android:layout_width="90dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/title_year"
-                android:background="@drawable/shape_edit"
-                android:ems="10"
-                android:hint="@string/title_year"
-                android:inputType="none"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/blank"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:focusable="false"
-                android:clickable="true" />
+                <TextView
+                    android:id="@+id/txt_regis_dateofbirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_dateofbirth"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/Layout_Birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editTextRegisDay"
+                        android:layout_width="80dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="@string/title_day"
+                        android:background="@drawable/shape_edit"
+                        android:clickable="true"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/title_day"
+                        android:inputType="none"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/blank"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/slad1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:text="/"
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
+
+                    <EditText
+                        android:id="@+id/editTextRegisMonth"
+                        android:layout_width="75dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="@string/title_month"
+                        android:background="@drawable/shape_edit"
+                        android:clickable="true"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/title_month"
+                        android:inputType="none"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/blank"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/slad2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:text="/"
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
+
+                    <EditText
+                        android:id="@+id/editTextRegisYear"
+                        android:layout_width="90dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="@string/title_year"
+                        android:background="@drawable/shape_edit"
+                        android:clickable="true"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/title_year"
+                        android:inputType="none"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/blank"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/logo_calendar"
+                        android:contentDescription="@string/bt_calendar" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_gender"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/logo_calendar"
-                android:contentDescription="@string/bt_calendar" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_regis_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_gender"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    style="@style/input_info"
+                    android:layout_marginTop="10dp"
+                    android:dropDownWidth="wrap_content"
+                    android:paddingHorizontal="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_phone"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_regis_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_phone"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editText_Phone"
+                    style="@style/input_info"
+                    android:layout_marginTop="10dp"
+                    android:autofillHints="@string/title_password"
+                    android:hint="@string/title_phone"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/Back_Btn"
+                    style="@style/button_dark"
+                    android:layout_width="120dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="35dp"
+                    android:fontFamily="@font/giraffe_font"
+                    android:text="@string/bt_back" />
+
+                <Button
+                    android:id="@+id/Save_Btn"
+                    style="@style/button_gold"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/giraffe_font"
+                    android:text="@string/bt_save" />
+            </LinearLayout>
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_gender"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_dateofbirth">
-
-        <TextView
-            android:id="@+id/txt_regis_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/txt_gender"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            style="@style/input_info"
-            android:layout_marginTop="10dp"
-            android:dropDownWidth="wrap_content"
-            android:paddingHorizontal="15dp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_layout_phone"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_gender">
-
-        <TextView
-            android:id="@+id/txt_regis_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/txt_phone"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText_Phone"
-            style="@style/input_info"
-            android:layout_marginTop="10dp"
-            android:autofillHints="@string/title_password"
-            android:hint="@string/title_phone"
-            android:inputType="phone" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/Back_Btn"
-        style="@style/button_black"
-        android:layout_width="120dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/giraffe_font"
-        android:text="@string/bt_back"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />
-
-    <Button
-        android:id="@+id/Save_Btn"
-        style="@style/button_gold"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/giraffe_font"
-        android:textSize="20sp"
-        android:text="@string/bt_save"
-        app:layout_constraintStart_toEndOf="@+id/Back_Btn"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone" />
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

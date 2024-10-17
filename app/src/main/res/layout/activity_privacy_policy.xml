@@ -33,8 +33,9 @@
 
                 <Button
                     android:id="@+id/button"
-                    style="@style/button_gold"
-                    android:layout_marginTop="16dp"
+                    style="@style/button_dark"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:text="@string/bt_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -242,7 +242,7 @@
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:layout_weight="1.5"
+                            android:layout_weight="1.3"
                             android:text=""
                             android:textColor="@color/white"
                             android:textSize="20sp" />
@@ -263,23 +263,15 @@
 
                         <Button
                             android:id="@+id/btnEdit"
+                            style="@style/button_gold"
                             android:layout_width="150dp"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/gold"
-                            android:fontFamily="@font/giraffe_font"
-                            android:text="แก้ไขข้อมูล"
-                            android:textStyle="bold"
-                            app:cornerRadius="24dp" />
+                            android:text="แก้ไขข้อมูล"/>
 
                         <Button
                             android:id="@+id/btnLogout"
+                            style="@style/button_red"
                             android:layout_width="150dp"
-                            android:layout_height="55dp"
-                            android:backgroundTint="#D80000"
-                            android:fontFamily="@font/giraffe_font"
-                            android:text="ออกจากระบบ"
-                            android:textStyle="bold"
-                            app:cornerRadius="24dp" />
+                            android:text="ออกจากระบบ" />
 
                         <TextView
                             android:id="@+id/textcontact"
@@ -289,7 +281,15 @@
                             android:text="@string/contact"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_line" />
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
