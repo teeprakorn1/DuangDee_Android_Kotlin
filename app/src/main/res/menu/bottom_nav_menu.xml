@@ -13,8 +13,8 @@
 
     <item
         android:id="@+id/navigation_horoscope"
-        android:icon="@drawable/logo_duduang"
-        android:title="ดูดวง"/>
+        android:title=""
+        android:enabled="false"/>
 
     <item
         android:id="@+id/navigation_history"

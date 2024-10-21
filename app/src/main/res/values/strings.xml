@@ -106,7 +106,7 @@
         \t\t\t2.3 ในบางกรณี คุณอาจให้ข้อมูลส่วนบุคคลของบุคคลอื่นแก่เรา (เช่น บุคคลในครอบครัวของคุณ เพื่อน หรือบุคคลในรายชื่อติดต่อของคุณ) หากคุณได้ให้ข้อมูลส่วนบุคคลดังกล่าวแก่เรา คุณยืนยันและรับรองว่าคุณได้ขอความยินยอมจากบุคคลดังกล่าวเพื่อการประมวลผลข้อมูลส่วนบุคคลตามนโยบายนี้แล้ว\n
     </string>
     <string name="txt_empty" />
-    <string name="contact"><u>Contact</u></string>
+    <string name="contact">Contact</string>
     <string name="txt_txt_01">ตั้งค่ารหัสผ่านใหม่</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

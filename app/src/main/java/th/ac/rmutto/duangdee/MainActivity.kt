@@ -8,11 +8,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -23,6 +25,7 @@ import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.encrypt
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.generateKey
+import th.ac.rmutto.duangdee.ui.horoscope.HoroscopeFragment
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private var usersEmail: String? = null
     private var usersUsernameOrUid: String? = null
     private lateinit var encryption: Encryption
+    private lateinit var navController: NavController
 
     private fun verifyToken(token: String) {
         // Verify Token From Server
@@ -101,20 +105,36 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.app_name)
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
 
-        val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navView: BottomNavigationView = binding.bottomNavigation
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-                R.id.navigation_dashboard,
-                R.id.navigation_horoscope,
-                R.id.navigation_history,
-                R.id.navigation_profile
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        fab.setOnClickListener {
+            navController.navigate(R.id.navigation_horoscope)
+        }
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    navController.navigate(R.id.navigation_home)
+                    true
+                }
+                R.id.navigation_dashboard -> {
+                    navController.navigate(R.id.navigation_dashboard)
+                    true
+                }
+                R.id.navigation_history -> {
+                    navController.navigate(R.id.navigation_history)
+                    true
+                }
+                R.id.navigation_profile -> {
+                    navController.navigate(R.id.navigation_profile)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

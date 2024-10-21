@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ui.history.HistoryFragment" >
 
     <com.google.android.material.tabs.TabLayout
@@ -14,6 +15,8 @@
         app:tabIndicatorGravity="stretch"
         app:tabIndicatorAnimationMode="elastic"
         app:tabSelectedTextColor="@color/white"
+        android:background="@color/super_blank"
+        app:tabTextColor="@color/white"
         app:tabIndicatorColor="@null"
         app:tabIndicator="@drawable/shape_tap"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,32 +26,25 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="Tarot" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
+            style="@style/textWhite"
+            android:theme="@style/textWhite"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="palmistry" />
     </com.google.android.material.tabs.TabLayout>
 
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager2"
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
-        </LinearLayout>
-    </ScrollView>
+        <!-- ที่สำหรับแสดงเนื้อหา -->
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
