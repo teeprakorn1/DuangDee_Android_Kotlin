@@ -87,7 +87,7 @@ class ZodiacResultActivity : AppCompatActivity() {
     }
 
     private fun showZodiac(zodiacID : String){
-        var url = getString(R.string.url_server) + getString(R.string.api_get_zodiac) + zodiacID
+        var url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_zodiac) + zodiacID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)

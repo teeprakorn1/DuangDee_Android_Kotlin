@@ -119,7 +119,7 @@ class EditProfileActivity : AppCompatActivity() {
         val editTextRegisMonth = findViewById<EditText>(R.id.editTextRegisMonth)
         val editTextRegisYear = findViewById<EditText>(R.id.editTextRegisYear)
 
-        val url = getString(R.string.url_server) + getString(R.string.api_get_profile) + userID
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_profile) + userID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)
@@ -241,7 +241,7 @@ class EditProfileActivity : AppCompatActivity() {
             return
         }
 
-        val url = getString(R.string.url_server) + getString(R.string.api_update_profile) + userID
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_update_profile) + userID
         val okHttpClient = OkHttpClient()
         val formBody: RequestBody = FormBody.Builder()
             .add("Users_DisplayName",editTextRegisDisplayName.text.toString())

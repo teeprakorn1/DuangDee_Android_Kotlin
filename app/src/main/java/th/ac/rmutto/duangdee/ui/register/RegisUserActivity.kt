@@ -65,7 +65,7 @@ class RegisUserActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val url = getString(R.string.url_server) + getString(R.string.api_check_username)
+            val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_username)
             val okHttpClient = OkHttpClient()
             val formBody: RequestBody = FormBody.Builder()
                 .add("Users_Username", usernameEdt)

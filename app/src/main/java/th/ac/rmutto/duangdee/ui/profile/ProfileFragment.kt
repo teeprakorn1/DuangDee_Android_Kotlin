@@ -143,7 +143,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateProfile(userID: String, view: View){
-        var url = getString(R.string.url_server) + getString(R.string.api_get_profile) + userID
+        var url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_profile) + userID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)
@@ -165,7 +165,7 @@ class ProfileFragment : Fragment() {
 
                     if (imageName != "null") {
                         val imageProfile = view.findViewById<ImageView>(R.id.imageProfile)
-                        url = getString(R.string.url_server) + imageName.toString()
+                        url = getString(R.string.url_server)+ getString(R.string.port_3000) + imageName.toString()
                         // Load image using Glide
                         Glide.with(this)
                             .load(url)
@@ -187,7 +187,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun deleteImageProfile(imagePath: String, userID : String) {
-        val url = getString(R.string.url_server) + getString(R.string.api_delete_profile_image) + userID
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_delete_profile_image) + userID
         val okHttpClient = OkHttpClient()
 
         val formBody: RequestBody = FormBody.Builder()
@@ -209,7 +209,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateImageProfile(userID: String) {
-        val url = getString(R.string.url_server) + getString(R.string.api_update_profile_image) + userID
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_update_profile_image) + userID
         val okHttpClient = OkHttpClient()
 
         val imageUri = imageUri ?: run {

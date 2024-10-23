@@ -64,7 +64,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             }
 
             if (email != null){
-                val url = getString(R.string.url_server) + getString(R.string.api_reset_password)
+                val url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_reset_password)
                 val okHttpClient = OkHttpClient()
                 val formBody: RequestBody = FormBody.Builder()
                     .add("Users_Email", email)

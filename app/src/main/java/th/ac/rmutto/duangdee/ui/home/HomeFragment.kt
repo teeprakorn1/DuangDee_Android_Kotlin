@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
                 showDialog()
             }else{
                 val birthDayFormat = dateFormat(usersDateOfBirth)
-                val url = getString(R.string.url_server) + getString(R.string.api_check_zodiac)
+                val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_zodiac)
                 val okHttpClient = OkHttpClient()
                 val formBody: RequestBody = FormBody.Builder()
                     .add("Users_BirthDate", birthDayFormat)
@@ -115,7 +115,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getUserBirthday(value : String) : String {
-        val url = getString(R.string.url_server) + getString(R.string.api_get_profile) + value
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_profile) + value
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)

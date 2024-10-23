@@ -65,8 +65,6 @@ class LoginActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
-        val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.ButtonLogin)
         val buttonRegister = findViewById<TextView>(R.id.TextRegister_Btn)
         val buttonLoginGoogle = findViewById<Button>(R.id.ButtonLoginGoogle)
@@ -79,61 +77,7 @@ class LoginActivity : AppCompatActivity() {
 
         buttonLogin.setOnClickListener {
 //            loadingDialog()
-            encryption = Encryption(this)
-            val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
-            val username = editTextUsername.text.toString()
-            val password = editTextPassword.text.toString()
-
-            if (username.isEmpty()) {
-                editTextUsername.error = "Username is required"
-                return@setOnClickListener
-            } else if (password.isEmpty()) {
-                editTextPassword.error = "Password is required"
-                return@setOnClickListener
-            }
-
-            val url = getString(R.string.url_server) + getString(R.string.api_login)
-            val okHttpClient = OkHttpClient()
-            val formBody: RequestBody = FormBody.Builder()
-                .add("Users_Username",username)
-                .add("Users_Password",password)
-                .build()
-            val request: Request = Request.Builder()
-                .url(url)
-                .post(formBody)
-                .build()
-            val response = okHttpClient.newCall(request).execute()
-            if(response.isSuccessful){
-                val obj = JSONObject(response.body!!.string())
-                val status = obj["status"].toString()
-                if (status == "true") {
-                    val token = obj["token"].toString()
-                    val key = generateKey()
-                    encryption.saveKeyToPreferences(key)
-                    val encryptToken = encrypt(token, key)
-                    with(sharedPref.edit()) {
-                        putString("token", encryptToken)
-                        apply()
-                    }
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    val message = obj["message"].toString()
-                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                }
-            }else{
-                val obj = JSONObject(response.body!!.string())
-                if (obj.has("login_status")){
-                    if (obj["login_status"].toString() == "false"){
-                        val message = obj["message"].toString()
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                    }
-                }else{
-                    Toast.makeText(applicationContext, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
-                    return@setOnClickListener
-                }
-            }
+            loginGeneral()
         }
 
         buttonRegister.setOnClickListener {
@@ -145,6 +89,64 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SendPasswordActivity::class.java)
             startActivity(intent)
 
+        }
+    }
+
+    private fun loginGeneral(){
+        encryption = Encryption(this)
+        val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
+        val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
+
+        val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val username = editTextUsername.text.toString()
+        val password = editTextPassword.text.toString()
+
+        if (username.isEmpty()) {
+            editTextUsername.error = "Username is required"
+        } else if (password.isEmpty()) {
+            editTextPassword.error = "Password is required"
+        }
+
+        val url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_login)
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+            .add("Users_Username",username)
+            .add("Users_Password",password)
+            .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .post(formBody)
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if(response.isSuccessful){
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "true") {
+                val token = obj["token"].toString()
+                val key = generateKey()
+                encryption.saveKeyToPreferences(key)
+                val encryptToken = encrypt(token, key)
+                with(sharedPref.edit()) {
+                    putString("token", encryptToken)
+                    apply()
+                }
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val message = obj["message"].toString()
+                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+            }
+        }else{
+            val obj = JSONObject(response.body!!.string())
+            if (obj.has("login_status")){
+                if (obj["login_status"].toString() == "false"){
+                    val message = obj["message"].toString()
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                }
+            }else{
+                Toast.makeText(applicationContext, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -187,7 +189,7 @@ class LoginActivity : AppCompatActivity() {
                     val displayName = firebaseUser.displayName
                     val email = firebaseUser.email
 
-                    var url = getString(R.string.url_server) + getString(R.string.api_check_uid)
+                    var url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_check_uid)
                     val okHttpClient = OkHttpClient()
                     var formBody: RequestBody = FormBody.Builder()
                         .add("Users_Google_Uid", uid)
@@ -206,7 +208,7 @@ class LoginActivity : AppCompatActivity() {
                             val googleSignInClients = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
                             googleSignInClients.signOut()
 
-                            url = getString(R.string.url_server) + getString(R.string.api_register_uid)
+                            url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_register_uid)
                             formBody = FormBody.Builder()
                                 .add("Users_Google_Uid", uid)
                                 .add("Users_Email", email.toString())
@@ -222,7 +224,7 @@ class LoginActivity : AppCompatActivity() {
                                 obj = JSONObject(response.body!!.string())
                                 status = obj["status"].toString()
                                 if (status == "true") {
-                                    url = getString(R.string.url_server) + getString(R.string.api_login_uid)
+                                    url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_login_uid)
                                     formBody = FormBody.Builder()
                                         .add("Users_Google_Uid", uid)
                                         .build()
@@ -267,7 +269,7 @@ class LoginActivity : AppCompatActivity() {
                                 return@addOnCompleteListener
                             }
                         }else if(status == "false"){
-                            url = getString(R.string.url_server) + getString(R.string.api_login_uid)
+                            url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_login_uid)
                             formBody = FormBody.Builder()
                                 .add("Users_Google_Uid", uid)
                                 .build()

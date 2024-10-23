@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun verifyToken(token: String) {
         // Verify Token From Server
-        val url = getString(R.string.url_server) + getString(R.string.api_verify_token)
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_verify_token)
         val okHttpClient = OkHttpClient()
         val formBody: RequestBody = FormBody.Builder().build()
         val request: Request = Request.Builder()

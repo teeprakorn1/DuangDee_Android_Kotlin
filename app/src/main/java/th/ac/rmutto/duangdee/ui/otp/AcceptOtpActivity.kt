@@ -77,7 +77,7 @@ class AcceptOtpActivity : AppCompatActivity() {
                 password = intent.getStringExtra("password")
 
                 if (email != null){
-                    var url = getString(R.string.url_server) + getString(R.string.api_verify_otp)
+                    var url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_verify_otp)
                     val okHttpClient = OkHttpClient()
                     var formBody: RequestBody = FormBody.Builder()
                         .add("Users_Email", email)
@@ -138,7 +138,7 @@ class AcceptOtpActivity : AppCompatActivity() {
                 }
             }else if (pageType == "ResetPassword"){
                 if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.api_verify_otp)
+                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_verify_otp)
                     val okHttpClient = OkHttpClient()
                     val formBody: RequestBody = FormBody.Builder()
                         .add("Users_Email", email)
@@ -179,7 +179,7 @@ class AcceptOtpActivity : AppCompatActivity() {
         resendButton.setOnClickListener {
             if (pageType == "Register"){
                 if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.api_request_register)
+                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_register)
                     val okHttpClient = OkHttpClient()
                     val formBody: RequestBody = FormBody.Builder()
                         .add("Users_Email", email)
@@ -211,7 +211,7 @@ class AcceptOtpActivity : AppCompatActivity() {
                 }
             }else if (pageType == "ResetPassword"){
                 if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.api_request_password)
+                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_password)
                     val okHttpClient = OkHttpClient()
                     val formBody: RequestBody = FormBody.Builder()
                         .add("Users_Email", email)

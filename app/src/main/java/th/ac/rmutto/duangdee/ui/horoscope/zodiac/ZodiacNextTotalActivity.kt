@@ -62,7 +62,7 @@ class ZodiacNextTotalActivity : AppCompatActivity() {
 
     // Show a data list
     private fun showDataList() {
-        val url: String = getString(R.string.url_server) + getString(R.string.api_get_zodiac)
+        val url: String = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_zodiac)
 
         // Use coroutines for background tasks
         CoroutineScope(Dispatchers.IO).launch {
@@ -141,7 +141,7 @@ class ZodiacNextTotalActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val data = list[position]
             holder.data = data
-            val url = getString(R.string.url_server) + data.zodiacImageFile
+            val url = getString(R.string.url_server)+ getString(R.string.port_3000) + data.zodiacImageFile
 
             // Load image using Picasso
             Picasso.get().load(url).into(holder.zodiacImageFile)

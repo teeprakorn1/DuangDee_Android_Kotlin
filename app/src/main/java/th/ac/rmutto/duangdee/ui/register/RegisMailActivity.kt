@@ -69,7 +69,7 @@ class RegisMailActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val url = getString(R.string.url_server) + getString(R.string.api_check_email)
+            val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_email)
 
             val okHttpClient = OkHttpClient()
             val formBody: RequestBody = FormBody.Builder()

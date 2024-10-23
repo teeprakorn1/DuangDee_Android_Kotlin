@@ -56,7 +56,7 @@ class ConfirmOtpActivity : AppCompatActivity() {
                 password = intent.getStringExtra("password")
 
                 if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.api_request_register)
+                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_register)
                     val okHttpClient = OkHttpClient()
                     val formBody: RequestBody = FormBody.Builder()
                         .add("Users_Email", email)
@@ -107,7 +107,7 @@ class ConfirmOtpActivity : AppCompatActivity() {
                         var obj = JSONObject(response.body!!.string())
                         var status = obj["status"].toString()
                         if (status == "false") {
-                            url = getString(R.string.url_server) + getString(R.string.api_request_password)
+                            url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_password)
                             formBody = FormBody.Builder()
                                 .add("Users_Email", email)
                                 .add("Value","0")
