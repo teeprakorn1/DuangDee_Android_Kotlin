@@ -44,6 +44,7 @@ class HoroscopeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_horoscope, container, false)
         val imgBtZodiac = view.findViewById<ImageButton>(R.id.imgBtZodiac)
         val imgBtTarot = view.findViewById<ImageButton>(R.id.imgBtTarot)
+        val imgBtHand = view.findViewById<ImageButton>(R.id.imgBtHand)
 
         imgBtZodiac.setOnClickListener {
             userID = getUserId()
@@ -88,6 +89,14 @@ class HoroscopeFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
+
+        imgBtHand.setOnClickListener {
+            val intent = Intent(activity, TarotActivity::class.java)
+            intent.putExtra("page_type","Horoscope")
+            startActivity(intent)
+            activity?.finish()
+        }
+
         return view
     }
 

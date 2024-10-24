@@ -8,12 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -22,16 +20,14 @@ import org.json.JSONObject
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.horoscope.palmprint.PalmprintCameraActivity
 import th.ac.rmutto.duangdee.ui.horoscope.tarot.TarotActivity
 import th.ac.rmutto.duangdee.ui.horoscope.zodiac.ZodiacResultActivity
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import th.ac.rmutto.duangdee.ui.profile.EditProfileActivity
-import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
 
 class HomeFragment : Fragment() {
 
@@ -52,6 +48,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val btZodiac = view.findViewById<ImageButton>(R.id.bt_zodiac)
         val btTarot = view.findViewById<ImageButton>(R.id.bt_tarot)
+        val btHand = view.findViewById<ImageView>(R.id.bt_hand)
 
         btZodiac.setOnClickListener {
             userID = getUserId()
@@ -92,6 +89,13 @@ class HomeFragment : Fragment() {
 
         btTarot.setOnClickListener {
             val intent = Intent(activity, TarotActivity::class.java)
+            intent.putExtra("page_type","Home")
+            startActivity(intent)
+            activity?.finish()
+        }
+
+        btHand.setOnClickListener{
+            val intent = Intent(activity, PalmprintCameraActivity::class.java)
             intent.putExtra("page_type","Home")
             startActivity(intent)
             activity?.finish()

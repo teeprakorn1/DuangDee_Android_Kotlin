@@ -1,10 +1,12 @@
 <resources>
+    <!--SERVER-->
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://10.13.1.120</string>
+    <string name="url_server">http://192.168.1.107</string>
     <string name="port_3000">:3000</string>
     <string name="port_4000">:4000</string>
     <string name="port_5000">:5000</string>
 
+    <!--API-->
     <string name="api_login">/api/login</string>
     <string name="api_login_uid">/api/login-uid</string>
     <string name="api_register">/api/register</string>
@@ -23,6 +25,11 @@
     <string name="api_delete_profile_image">/api/delete-profile-image/</string>
     <string name="api_check_zodiac">/api/check-zodiac</string>
     <string name="api_get_zodiac">/api/get-zodiac/</string>
+    <string name="api_palmprint_ai">/api/palmprint-ai</string>
+    <string name="api_add_playhand">/api/add-playhand</string>
+    <string name="api_get_handdetail">/api/get-handdetail/</string>
+    <string name="api_get_card">/api/get-card/</string>
+    <string name="api_get_count_card">/api/get-count-card</string>
 
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>

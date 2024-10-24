@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
-    tools:context=".ui.horoscope.palmprint.palmprintResultActivity">
+    tools:context=".ui.horoscope.palmprint.PalmprintResultActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
