@@ -51,21 +51,27 @@ class RegisUserActivity : AppCompatActivity() {
             val passwordEdt = editTextPassword.text.toString()
             val confirmPasswordEdt = editTextConfirmPassword.text.toString()
 
-            if(usernameEdt.isEmpty() || passwordEdt.isEmpty() || confirmPasswordEdt.isEmpty()) {
-                editTextUsername.error = "Please enter username and password"
+            if(usernameEdt.isEmpty()) {
+                editTextUsername.error = "Please enter username"
                 return@setOnClickListener
             }else if (usernameEdt.length < 8){
                 editTextUsername.error = "Username must be at least 8 characters"
                 return@setOnClickListener
-            }else if (passwordEdt.length < 8 || confirmPasswordEdt.length < 8){
+            }else if (passwordEdt.isEmpty()) {
+                editTextPassword.error = "Please enter password"
+                return@setOnClickListener
+            }else if (passwordEdt.length < 8){
                 editTextPassword.error = "Password must be at least 8 characters"
+                return@setOnClickListener
+            }else if (confirmPasswordEdt.isEmpty()) {
+                editTextConfirmPassword.error = "Please enter confirm password"
                 return@setOnClickListener
             }else if (passwordEdt != confirmPasswordEdt){
                 editTextConfirmPassword.error = "Password not match"
                 return@setOnClickListener
             }
 
-            val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_username)
+            val url = getString(R.string.url_server) + getString(R.string.api_check_username)
             val okHttpClient = OkHttpClient()
             val formBody: RequestBody = FormBody.Builder()
                 .add("Users_Username", usernameEdt)

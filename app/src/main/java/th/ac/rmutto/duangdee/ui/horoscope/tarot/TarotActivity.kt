@@ -192,6 +192,7 @@ class TarotActivity : AppCompatActivity() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_tarot, null)
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
         val dialog = dialogBuilder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val yesBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.yesBtn)
         val noBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.noBtn)
