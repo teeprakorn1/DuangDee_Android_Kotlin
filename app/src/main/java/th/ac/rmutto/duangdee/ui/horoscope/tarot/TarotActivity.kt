@@ -2,12 +2,14 @@ package th.ac.rmutto.duangdee.ui.horoscope.tarot
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,11 +17,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import th.ac.rmutto.duangdee.ui.register.RegisMailActivity
 
@@ -33,6 +39,9 @@ class TarotActivity : AppCompatActivity() {
     private var cardLoveTopic : String? = null
     private var cardImageFile : String? = null
 
+    private var decode : String? = null
+    private lateinit var encryption: Encryption
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,6 +51,12 @@ class TarotActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        // Start Decryption SharedPreferences
+        val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val usersID = sharedPref.getString("usersID", null)
+
+        encryption = Encryption(this)
+        decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -166,7 +181,7 @@ class TarotActivity : AppCompatActivity() {
         }
 
         btAccept.setOnClickListener {
-            dialogConfirmTarot()
+            dialogConfirmTarot(randomNumbers.toString())
         }
         btClose.setOnClickListener {
             dialog.dismiss()
@@ -188,7 +203,7 @@ class TarotActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun dialogConfirmTarot() {
+    private fun dialogConfirmTarot(cardID: String) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_tarot, null)
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
         val dialog = dialogBuilder.create()
@@ -198,9 +213,7 @@ class TarotActivity : AppCompatActivity() {
         val noBtn = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.noBtn)
 
         yesBtn.setOnClickListener {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            addPlayCard(cardID)
         }
         noBtn.setOnClickListener {
             dialog.dismiss()
@@ -210,6 +223,36 @@ class TarotActivity : AppCompatActivity() {
 
     private fun randomCard(number: Int): Int {
         return (1..number).random()
+    }
+
+    private fun addPlayCard(cardID: String) {
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_add_playcard)
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+            .add("Users_ID", decode.toString())
+            .add("Card_ID", cardID)
+            .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .post(formBody)
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if(response.isSuccessful) {
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "true") {
+                val message = obj["message"].toString()
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } else if(status == "false"){
+                val message = obj["message"].toString()
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                return
+            }
+        }else{
+            Toast.makeText(this, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showCard(cardID : String){

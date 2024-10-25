@@ -44,7 +44,7 @@
             android:layout_marginStart="1dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="50dp"
-            android:text="การยอมรับคำทำนายจะมีการเก็บบันทึกข้อมูลการเล่นของคุณ และวันนี้คุณจะเล่นการทำนายไพ่ไม่ได้อีกแล้ว"
+            android:text="@string/confirm_taror"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"

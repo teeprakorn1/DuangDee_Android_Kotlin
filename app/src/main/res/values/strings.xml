@@ -1,7 +1,7 @@
 <resources>
     <!--SERVER-->
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://10.13.1.71</string>
+    <string name="url_server">http://10.13.3.124</string>
     <string name="port_3000">:3000</string>
     <string name="port_4000">:4000</string>
     <string name="port_5000">:5000</string>
@@ -30,6 +30,8 @@
     <string name="api_get_handdetail">/api/get-handdetail/</string>
     <string name="api_get_card">/api/get-card/</string>
     <string name="api_get_count_card">/api/get-count-card</string>
+    <string name="api_add_playcard">/api/add-playcard</string>
+    <string name="api_get_playcard_top7">/api/get-playcard-top7/</string>"
 
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>
@@ -252,6 +254,10 @@
         sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+
+    <string name="confirm_taror">
+    การยอมรับคำทำนายจะมีการเก็บบันทึกข้อมูลการเล่นของคุณ และ<font color='red'>วันนี้คุณจะเล่นการทำนายไพ่ไม่ได้อีกแล้ว</font>
     </string>
 
 

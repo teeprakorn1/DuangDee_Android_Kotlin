@@ -108,7 +108,7 @@ class ZodiacResultActivity : AppCompatActivity() {
 
                 if (zodiacImageFile != "null") {
                     val imageProfile = findViewById<ImageView>(R.id.imageZodiac)
-                    url = getString(R.string.url_server) + zodiacImageFile.toString()
+                    url = getString(R.string.url_server) + getString(R.string.port_3000) + zodiacImageFile.toString()
                     // Load image using Glide
                     Glide.with(this)
                         .load(url)
