@@ -55,7 +55,7 @@
         app:fabCustomSize="70dp"
         android:backgroundTint="#FDD885"
         android:background="@drawable/shape_button"
-        android:src="@drawable/logo_duduang6"
+        android:src="@drawable/logo_duduang"
         android:layout_gravity="center"
         app:layout_anchorGravity="center_horizontal"
         app:layout_anchor="@id/bottom_navigation"

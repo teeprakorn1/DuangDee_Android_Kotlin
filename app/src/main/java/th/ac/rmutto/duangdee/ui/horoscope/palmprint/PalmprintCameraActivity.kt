@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -62,14 +64,27 @@ class PalmprintCameraActivity : AppCompatActivity() {
         }
 
         val cameraBtn = findViewById<Button>(R.id.CameraBtn)
+        val bt_close = findViewById<ImageButton>(R.id.bt_close)
+        val checkBox = findViewById<CheckBox>(R.id.checkBox)
+
+        bt_close.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         cameraBtn.setOnClickListener {
-            ImagePicker.with(this)
-                .crop()
-                .compress(1024)
-                .createIntent { intent ->
-                    imagePickerLauncher.launch(intent)
-                }
+            if (!checkBox.isChecked){
+                Toast.makeText(this, "กรุณายอมรับข้อกำหนดและเงื่อนไข", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }else {
+                ImagePicker.with(this)
+                    .crop()
+                    .compress(1024)
+                    .createIntent { intent ->
+                        imagePickerLauncher.launch(intent)
+                    }
+            }
         }
 
         imagePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
