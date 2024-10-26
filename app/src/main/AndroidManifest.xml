@@ -26,6 +26,9 @@
         android:theme="@style/Theme.DuangDeeProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.dashboard.DashboardResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.horoscope.palmprint.PalmprintCameraActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -37,7 +40,6 @@
             android:name=".ui.contact.ContactActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.horoscope.tarot.TarotActivity"
             android:exported="false"
