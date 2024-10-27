@@ -40,6 +40,7 @@ class TarotActivity : AppCompatActivity() {
     private var cardImageFile : String? = null
 
     private var decode : String? = null
+    private var tokens: String? = null
     private lateinit var encryption: Encryption
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,9 +55,11 @@ class TarotActivity : AppCompatActivity() {
         // Start Decryption SharedPreferences
         val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         encryption = Encryption(this)
         decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -235,6 +238,7 @@ class TarotActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .post(formBody)
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if(response.isSuccessful) {
@@ -261,6 +265,7 @@ class TarotActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {
@@ -288,6 +293,7 @@ class TarotActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {

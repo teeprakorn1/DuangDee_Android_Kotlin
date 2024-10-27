@@ -58,6 +58,8 @@ class ProfileFragment : Fragment() {
     private var usersGender: String? = null
     private var imageName: String? = null
 
+    private var tokens: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Initialize Encryption
@@ -87,8 +89,10 @@ class ProfileFragment : Fragment() {
         // Start Decryption SharedPreferences
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         // Attempt to decrypt the token
+        tokens = token?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         if (decode != null) {
             updateProfile(decode, view)
@@ -148,6 +152,7 @@ class ProfileFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         try {
             val response = okHttpClient.newCall(request).execute()
@@ -196,6 +201,7 @@ class ProfileFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .delete(formBody)
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if(response.isSuccessful){
@@ -227,6 +233,7 @@ class ProfileFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .put(requestBody)
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {

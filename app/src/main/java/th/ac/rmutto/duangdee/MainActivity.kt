@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .post(formBody)
-            .addHeader("x-access-token", token) // Add your header here
+            .addHeader("x-access-token", token)
             .build()
 
         try {

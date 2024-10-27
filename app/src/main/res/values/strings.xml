@@ -1,7 +1,7 @@
 <resources>
     <!--SERVER-->
     <string name="app_name">DuangDee</string>
-    <string name="url_server">http://10.13.1.71</string>
+    <string name="url_server">http://10.13.3.124</string>
     <string name="port_3000">:3000</string>
     <string name="port_4000">:4000</string>
     <string name="port_5000">:5000</string>

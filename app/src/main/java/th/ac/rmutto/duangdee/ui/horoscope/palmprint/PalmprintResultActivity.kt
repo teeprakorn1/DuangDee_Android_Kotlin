@@ -1,8 +1,10 @@
 package th.ac.rmutto.duangdee.ui.horoscope.palmprint
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -14,14 +16,23 @@ import okhttp3.Request
 import org.json.JSONObject
 import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 class PalmprintResultActivity : AppCompatActivity() {
     private var handDetailID: String? = null
     private var playHandScore: String? = null
 
+    private lateinit var encryption: Encryption
+    private var tokens: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("token", null)
+
+        encryption = Encryption(this)
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_palmprint_result)
@@ -42,7 +53,7 @@ class PalmprintResultActivity : AppCompatActivity() {
         }
 
         if (pageType == "PalmprintCamera"){
-            getHandDetail(handDetailID!!.toInt())
+            getHandDetail(handDetailID.toString())
         }
 
         val backBtn = findViewById<Button>(R.id.backBtn)
@@ -62,22 +73,22 @@ class PalmprintResultActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun getHandDetail(handDetailID : Int) {
+    private fun getHandDetail(handDetailID : String) {
         val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_handdetail) + handDetailID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
-
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {
             val obj = JSONObject(response.body!!.string())
             val status = obj["status"].toString()
             if (status == "true") {
                 findViewById<TextView>(R.id.txt_HandName).text = obj["HandDetail_Name"].toString()
-                findViewById<TextView>(R.id.txt_detail).text = "การทำนาย: " + obj["HandDetail_Detail"].toString() + "%"
-                findViewById<TextView>(R.id.txt_percent).text = "ความโชคดีของคุณได้ $playHandScore"
+                findViewById<TextView>(R.id.txt_detail1).text = "การทำนาย: " + obj["HandDetail_Detail"].toString()
+                findViewById<TextView>(R.id.txt_percent).text = "ความโชคดีของคุณได้ $playHandScore%"
             } else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

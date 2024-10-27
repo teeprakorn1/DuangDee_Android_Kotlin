@@ -1,6 +1,7 @@
 package th.ac.rmutto.duangdee.ui.horoscope.zodiac
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,8 @@ import okhttp3.Request
 import org.json.JSONObject
 import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import th.ac.rmutto.duangdee.ui.profile.ProfileFragment
 
@@ -29,8 +32,16 @@ class ZodiacResultActivity : AppCompatActivity() {
     private var zodiacLoveTopic : String? = null
     private var zodiacImageFile : String? = null
 
+    private lateinit var encryption: Encryption
+    private var tokens: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("token", null)
+
+        encryption = Encryption(this)
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         supportActionBar?.hide()
@@ -92,6 +103,7 @@ class ZodiacResultActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {

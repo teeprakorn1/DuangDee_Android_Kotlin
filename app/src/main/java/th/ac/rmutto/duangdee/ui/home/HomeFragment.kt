@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var usersDateOfBirth: String
     private lateinit var userID: String
+    private var tokens: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +66,7 @@ class HomeFragment : Fragment() {
                 val request: Request = Request.Builder()
                     .url(url)
                     .post(formBody)
+                    .addHeader("x-access-token", tokens.toString())
                     .build()
                 val response = okHttpClient.newCall(request).execute()
                 if(response.isSuccessful){
@@ -107,7 +109,9 @@ class HomeFragment : Fragment() {
     private fun getUserId() : String {
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
+        tokens = token?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         if (decode != null) {
             return decode
@@ -124,6 +128,7 @@ class HomeFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         try {
             val response = okHttpClient.newCall(request).execute()

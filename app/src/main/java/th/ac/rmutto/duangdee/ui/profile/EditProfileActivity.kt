@@ -39,6 +39,7 @@ class EditProfileActivity : AppCompatActivity() {
     private var genderData: String? = null
     private var formattedDate: String? = null
     private lateinit var encryption: Encryption
+    private var tokens: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,9 +55,11 @@ class EditProfileActivity : AppCompatActivity() {
         // Start Decryption SharedPreferences
         val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         encryption = Encryption(this)
         val decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         val optionGender = arrayOf("โปรดเลือก", "ผู้ชาย", "ผู้หญิง", "อื่นๆ")
@@ -124,6 +127,7 @@ class EditProfileActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         try {
             val response = okHttpClient.newCall(request).execute()
@@ -254,6 +258,7 @@ class EditProfileActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .put(formBody)
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if(response.isSuccessful) {

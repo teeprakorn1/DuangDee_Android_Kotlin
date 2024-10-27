@@ -1,5 +1,6 @@
 package th.ac.rmutto.duangdee.ui.horoscope.zodiac
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,12 +24,23 @@ import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject
 import th.ac.rmutto.duangdee.R
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
+import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
 
 class ZodiacTotalActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var data = ArrayList<Data>()
 
+    private lateinit var encryption: Encryption
+    private var tokens: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("token", null)
+
+        encryption = Encryption(this)
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_zodiac_total)
@@ -71,7 +83,11 @@ class ZodiacTotalActivity : AppCompatActivity() {
         // Use coroutines for background tasks
         CoroutineScope(Dispatchers.IO).launch {
             val okHttpClient = OkHttpClient()
-            val request: Request = Request.Builder().url(url).get().build()
+            val request: Request = Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("x-access-token", tokens.toString())
+                .build()
             try {
                 val response = okHttpClient.newCall(request).execute()
 

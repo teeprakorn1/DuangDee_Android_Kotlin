@@ -39,12 +39,15 @@ class PalmprintCameraActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
 
     private lateinit var encryption: Encryption
+    private var tokens: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         encryption = Encryption(this)
+        tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
         val decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
 
         super.onCreate(savedInstanceState)
@@ -64,10 +67,10 @@ class PalmprintCameraActivity : AppCompatActivity() {
         }
 
         val cameraBtn = findViewById<Button>(R.id.CameraBtn)
-        val bt_close = findViewById<ImageButton>(R.id.bt_close)
+        val btClose = findViewById<ImageButton>(R.id.bt_close)
         val checkBox = findViewById<CheckBox>(R.id.checkBox)
 
-        bt_close.setOnClickListener {
+        btClose.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -178,6 +181,7 @@ class PalmprintCameraActivity : AppCompatActivity() {
             val request: Request = Request.Builder()
                 .url(url)
                 .post(formBody)
+                .addHeader("x-access-token", tokens.toString())
                 .build()
             val response = okHttpClient.newCall(request).execute()
             if(response.isSuccessful) {
@@ -208,6 +212,7 @@ class PalmprintCameraActivity : AppCompatActivity() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
 
         val response = okHttpClient.newCall(request).execute()

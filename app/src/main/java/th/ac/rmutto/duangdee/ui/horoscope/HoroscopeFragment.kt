@@ -19,6 +19,7 @@ import org.json.JSONObject
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import th.ac.rmutto.duangdee.ui.horoscope.palmprint.PalmprintCameraActivity
 import th.ac.rmutto.duangdee.ui.horoscope.tarot.TarotActivity
 import th.ac.rmutto.duangdee.ui.horoscope.zodiac.ZodiacResultActivity
 import th.ac.rmutto.duangdee.ui.login.LoginActivity
@@ -31,6 +32,7 @@ class HoroscopeFragment : Fragment() {
     private lateinit var encryption: Encryption
     private lateinit var usersDateOfBirth: String
     private lateinit var userID: String
+    private var tokens: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +55,7 @@ class HoroscopeFragment : Fragment() {
                 showDialog()
             }else{
                 val birthDayFormat = dateFormat(usersDateOfBirth)
-                val url = getString(R.string.url_server) + getString(R.string.api_check_zodiac)
+                val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_zodiac)
                 val okHttpClient = OkHttpClient()
                 val formBody: RequestBody = FormBody.Builder()
                     .add("Users_BirthDate", birthDayFormat)
@@ -61,6 +63,7 @@ class HoroscopeFragment : Fragment() {
                 val request: Request = Request.Builder()
                     .url(url)
                     .post(formBody)
+                    .addHeader("x-access-token", tokens.toString())
                     .build()
                 val response = okHttpClient.newCall(request).execute()
                 if(response.isSuccessful){
@@ -91,7 +94,7 @@ class HoroscopeFragment : Fragment() {
         }
 
         imgBtHand.setOnClickListener {
-            val intent = Intent(activity, TarotActivity::class.java)
+            val intent = Intent(activity, PalmprintCameraActivity::class.java)
             intent.putExtra("page_type","Horoscope")
             startActivity(intent)
             activity?.finish()
@@ -103,8 +106,10 @@ class HoroscopeFragment : Fragment() {
     private fun getUserId() : String {
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
+        tokens = token?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         if (decode != null) {
             return decode
         } else {
@@ -115,11 +120,12 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun getUserBirthday(value : String) : String {
-        val url = getString(R.string.url_server) + getString(R.string.api_get_profile) + value
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_profile) + value
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         try {
             val response = okHttpClient.newCall(request).execute()

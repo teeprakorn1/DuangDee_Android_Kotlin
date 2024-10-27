@@ -43,6 +43,8 @@ class HistoryTarotFragment : Fragment() {
     private var recyclerView: RecyclerView? = null
     private var data = ArrayList<Data>()
 
+    private var tokens: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Initialize Encryption
@@ -60,8 +62,10 @@ class HistoryTarotFragment : Fragment() {
         // Start Decryption SharedPreferences
         val sharedPref = requireActivity().getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
+        val token = sharedPref.getString("token", null)
 
         // Attempt to decrypt the token
+        tokens = token?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         val decode = usersID?.let { decrypt(it, encryption.getKeyFromPreferences()) }
         if (decode != null) {
             showDataList(decode)
@@ -80,7 +84,7 @@ class HistoryTarotFragment : Fragment() {
         // Use coroutines for background tasks
         CoroutineScope(Dispatchers.IO).launch {
             val okHttpClient = OkHttpClient()
-            val request: Request = Request.Builder().url(url).get().build()
+            val request: Request = Request.Builder().url(url).get().addHeader("x-access-token", tokens.toString()).build()
             try {
                 val response = okHttpClient.newCall(request).execute()
 
@@ -125,6 +129,7 @@ class HistoryTarotFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         try {
             val response = okHttpClient.newCall(request).execute()
@@ -234,6 +239,7 @@ class HistoryTarotFragment : Fragment() {
         val request: Request = Request.Builder()
             .url(url)
             .get()
+            .addHeader("x-access-token", tokens.toString())
             .build()
         val response = okHttpClient.newCall(request).execute()
         if (response.isSuccessful) {
