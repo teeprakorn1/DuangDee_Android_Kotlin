@@ -81,7 +81,6 @@ class DashboardResultActivity : AppCompatActivity() {
 
         if (pageType == "Dashboard") {
             getSummary(decode)
-
         }
 
         val btBack = findViewById<Button>(R.id.bt_back)
@@ -314,7 +313,7 @@ class DashboardResultActivity : AppCompatActivity() {
             val obj = JSONObject(response.body!!.string())
             val status = obj["status"].toString()
             if (status == "true") {
-                Toast.makeText(this, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show()
+                setDisplayData(usersID)
             }else{
                 dialogWarning()
             }
