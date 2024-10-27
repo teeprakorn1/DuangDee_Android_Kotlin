@@ -32,6 +32,7 @@
     <string name="api_get_count_card">/api/get-count-card</string>
     <string name="api_add_playcard">/api/add-playcard</string>
     <string name="api_get_playcard_top7">/api/get-playcard-top7/</string>"
+    <string name="api_get_playhand_top1">/api/get-playhand-top1/</string>"
 
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>

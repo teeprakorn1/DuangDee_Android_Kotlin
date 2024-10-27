@@ -29,8 +29,6 @@ import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
-import th.ac.rmutto.duangdee.ui.horoscope.zodiac.ZodiacResultActivity
-import th.ac.rmutto.duangdee.ui.login.LoginActivity
 
 class HistoryTarotFragment : Fragment() {
     private var cardName : String? = null
@@ -70,7 +68,7 @@ class HistoryTarotFragment : Fragment() {
         if (decode != null) {
             showDataList(decode)
         } else {
-            startActivity(Intent(activity, LoginActivity::class.java))
+            startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
         }
 
@@ -107,17 +105,17 @@ class HistoryTarotFragment : Fragment() {
                         }
                     } else {
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(requireContext(), "No data", Toast.LENGTH_LONG).show()
+                            dialogWarning()
                         }
                     }
                 } else {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Error: ${response.code}", Toast.LENGTH_LONG).show()
+                        dialogWarning()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    dialogWarning()
                 }
             }
         }
@@ -139,16 +137,15 @@ class HistoryTarotFragment : Fragment() {
                 if (status == "true") {
                     return obj.optString("Card_Name", "N/A")
                 } else {
-                    startActivity(Intent(activity, LoginActivity::class.java))
+                    startActivity(Intent(activity, MainActivity::class.java))
                     activity?.finish()
                 }
             } else {
-                startActivity(Intent(activity, LoginActivity::class.java))
+                startActivity(Intent(activity, MainActivity::class.java))
                 activity?.finish()
             }
         } catch (e: Exception) {
-            Log.e("VerifyTokenError", "Error verifying token", e)
-            startActivity(Intent(activity, LoginActivity::class.java))
+            startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
         }
         return "N/A"
@@ -259,5 +256,21 @@ class HistoryTarotFragment : Fragment() {
             startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
         }
+    }
+
+    private fun dialogWarning() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_nosummary, null)
+        val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogView)
+        val dialog = dialogBuilder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val txtMessage = dialogView.findViewById<TextView>(R.id.textviewshowmassege1)
+        val btYes = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btYes)
+        txtMessage.text = "คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อน ถึงจะสามารถดูประวัติการเล่นของคุณได้"
+        btYes.setOnClickListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+            activity?.finish()
+        }
+        dialog.show()
     }
 }

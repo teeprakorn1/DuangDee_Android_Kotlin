@@ -48,10 +48,9 @@
                         android:id="@+id/imageZodiac"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/shape_hand"
+                        android:background="@drawable/logo_hand"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_hand"
                         app:cardCornerRadius="40dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="โชคดีมาก"
+                        android:text="NULL"
                         android:textColor="@color/black"
                         android:textSize="32sp"
                         android:textStyle="bold" />
@@ -85,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="ความโชคดีของคุณได้ 70.24%"
+                        android:text="NULL"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -95,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="  การทำนาย: อ่อนโยนและมีความรู้สึกสูง อ่อนโยนและมีความรู้สึกสูง อ่อนโยนและมีความรู้สึกสูง อ่อนโยนและมีความรู้สึกสูง"
+                        android:text="NULL"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />

@@ -188,11 +188,10 @@ class PalmprintCameraActivity : AppCompatActivity() {
                 val obj = JSONObject(response.body!!.string())
                 val status = obj["status"].toString()
                 if (status == "true") {
-                    val message = obj["message"].toString()
-                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, PalmprintResultActivity::class.java)
                     intent.putExtra("HandDetail_ID", handDetailID.toString())
                     intent.putExtra("PlayHand_Score", summaryScore.toString())
+                    intent.putExtra("ImagePath", imagePath)
                     intent.putExtra("page_type", "PalmprintCamera")
                     startActivity(intent)
                 } else if(status == "false"){
@@ -201,7 +200,8 @@ class PalmprintCameraActivity : AppCompatActivity() {
                     return
                 }
             }else{
-                Toast.makeText(this, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }
