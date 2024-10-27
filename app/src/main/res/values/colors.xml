@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="green">#40FF00</color>
+    <color name="very_green">#308900</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="gold">#CE9B1D</color>
@@ -13,6 +14,7 @@
     <color name="yellow">#F8CA58</color>
     <color name="yellow_light">#FFE600</color>
     <color name="orange">#FFAA00</color>
+    <color name="very_orange">#729211</color>
     <color name="gray">#FF808080</color>
     <color name="black_gray">#353232</color>
     <color name="blank">#BABABABA</color>

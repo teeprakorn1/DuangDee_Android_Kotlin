@@ -94,7 +94,7 @@ class AcceptOtpActivity : AppCompatActivity() {
                         var  obj = JSONObject(response.body!!.string())
                         var status = obj["status"].toString()
                         if (status == "true") {
-                            url = getString(R.string.url_server) + getString(R.string.api_register)
+                            url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_register)
                             formBody = FormBody.Builder()
                                 .add("Users_Email", email)
                                 .add("Users_Username", username.toString())

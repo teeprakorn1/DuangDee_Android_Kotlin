@@ -91,7 +91,7 @@ class ConfirmOtpActivity : AppCompatActivity() {
                 }
             }else if (pageType == "ResetPassword"){
                 if (email != null){
-                    var url = getString(R.string.url_server) + getString(R.string.api_check_email)
+                    var url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_email)
 
                     val okHttpClient = OkHttpClient()
                     var formBody: RequestBody = FormBody.Builder()

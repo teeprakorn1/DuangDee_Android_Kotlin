@@ -29,11 +29,11 @@ class DashboardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val btSummary = view.findViewById<Button>(R.id.bt_summary)
 
-        val bt_summary = view.findViewById<Button>(R.id.bt_summary)
-
-        bt_summary.setOnClickListener{
+        btSummary.setOnClickListener{
             val intent = Intent(activity, DashboardResultActivity::class.java)
+            intent.putExtra("page_type","Dashboard")
             startActivity(intent)
         }
 

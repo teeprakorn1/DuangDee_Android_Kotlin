@@ -82,10 +82,12 @@ class HistoryPalmFragment : Fragment() {
                     val playHandScore = obj.optString("PlayHand_Score", "N/A").toString()
                     val handDetailID = obj.optString("HandDetail_ID", "N/A").toString()
                     getHandDetail(handDetailID, playHandScore, playHandImageFile, view)
+                }else{
+                    dialogWarning()
                 }
+            }else{
                 dialogWarning()
             }
-            dialogWarning()
         } catch (e: Exception) {
             startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
