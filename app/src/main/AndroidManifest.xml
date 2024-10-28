@@ -26,6 +26,9 @@
         android:theme="@style/Theme.DuangDeeProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.horoscope.palmprint.CameraActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.dashboard.DashboardResultActivity"
             android:exported="false" />
         <activity

@@ -41,11 +41,6 @@
     <string name="api_get_summary">/api/get-summary/</string>
 
 
-
-
-
-
-
     <!--Menu-->
     <string name="title_home">หน้าหลัก</string>
     <string name="title_dashboard">สรุป</string>

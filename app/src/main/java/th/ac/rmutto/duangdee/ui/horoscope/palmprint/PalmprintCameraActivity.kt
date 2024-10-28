@@ -13,6 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -66,6 +67,21 @@ class PalmprintCameraActivity : AppCompatActivity() {
             finish()
         }
 
+        when (pageType) {
+            "Horoscope", "Home", "CameraActivity" -> {
+                if (pageType == "CameraActivity") {
+                    imageUri = intent.getStringExtra("image_path").toString().toUri()
+                    updateImageProfile(decode)
+                }
+            }
+            else -> {
+                // ส่งกลับไปยัง MainActivity หากไม่ตรงกับค่าที่คาดไว้
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+
+
         val cameraBtn = findViewById<Button>(R.id.CameraBtn)
         val btClose = findViewById<ImageButton>(R.id.bt_close)
         val checkBox = findViewById<CheckBox>(R.id.checkBox)
@@ -81,22 +97,9 @@ class PalmprintCameraActivity : AppCompatActivity() {
                 Toast.makeText(this, "กรุณายอมรับข้อกำหนดและเงื่อนไข", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }else {
-                ImagePicker.with(this)
-                    .crop()
-                    .compress(1024)
-                    .createIntent { intent ->
-                        imagePickerLauncher.launch(intent)
-                    }
-            }
-        }
-
-        imagePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                imageUri = data?.data
-                imageUri?.let {
-                    updateImageProfile(decode)
-                }
+                intent = Intent(this, CameraActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation (libs.picasso)
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.lifecycle)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,4 +68,6 @@ dependencies {
     implementation (libs.imagepicker)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
 }
