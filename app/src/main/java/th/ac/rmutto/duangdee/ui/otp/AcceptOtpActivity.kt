@@ -2,9 +2,12 @@ package th.ac.rmutto.duangdee.ui.otp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.StrictMode
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -13,6 +16,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.airbnb.lottie.LottieAnimationView
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -63,188 +67,234 @@ class AcceptOtpActivity : AppCompatActivity() {
         editTextOTP6.addTextChangedListener(CustomTextWatcher(editTextOTP6, null))
 
         confirmButton.setOnClickListener {
-            val otp = editTextOTP1.text.toString() + editTextOTP2.text.toString() +
-                    editTextOTP3.text.toString() + editTextOTP4.text.toString() +
-                    editTextOTP5.text.toString() + editTextOTP6.text.toString()
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                val otp = editTextOTP1.text.toString() + editTextOTP2.text.toString() +
+                        editTextOTP3.text.toString() + editTextOTP4.text.toString() +
+                        editTextOTP5.text.toString() + editTextOTP6.text.toString()
 
-            if (otp.length != 6){
-                Toast.makeText(applicationContext, "กรุณากรอกรหัส OTP ให้ครบถ้วน", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+                if (otp.length != 6){
+                    Toast.makeText(applicationContext, "กรุณากรอกรหัส OTP ให้ครบถ้วน", Toast.LENGTH_LONG).show()
+                    findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                    return@postDelayed
+                }
 
-            if (pageType == "Register"){
-                username = intent.getStringExtra("username")
-                password = intent.getStringExtra("password")
+                if (pageType == "Register"){
+                    username = intent.getStringExtra("username")
+                    password = intent.getStringExtra("password")
 
-                if (email != null){
-                    var url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_verify_otp)
-                    val okHttpClient = OkHttpClient()
-                    var formBody: RequestBody = FormBody.Builder()
-                        .add("Users_Email", email)
-                        .add("OTP", otp)
-                        .add("Value", "0")
-                        .build()
-                    var request: Request = Request.Builder()
-                        .url(url)
-                        .post(formBody)
-                        .build()
+                    if (email != null){
+                        var url = getString(R.string.url_server)+ getString(R.string.port_3000) + getString(R.string.api_verify_otp)
+                        val okHttpClient = OkHttpClient()
+                        var formBody: RequestBody = FormBody.Builder()
+                            .add("Users_Email", email)
+                            .add("OTP", otp)
+                            .add("Value", "0")
+                            .build()
+                        var request: Request = Request.Builder()
+                            .url(url)
+                            .post(formBody)
+                            .build()
 
-                    var response = okHttpClient.newCall(request).execute()
-                    if(response.isSuccessful) {
-                        var  obj = JSONObject(response.body!!.string())
-                        var status = obj["status"].toString()
-                        if (status == "true") {
-                            url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_register)
-                            formBody = FormBody.Builder()
-                                .add("Users_Email", email)
-                                .add("Users_Username", username.toString())
-                                .add("Users_Password", password.toString())
-                                .build()
-                            request = Request.Builder()
-                                .url(url)
-                                .post(formBody)
-                                .build()
+                        var response = okHttpClient.newCall(request).execute()
+                        if(response.isSuccessful) {
+                            var  obj = JSONObject(response.body!!.string())
+                            var status = obj["status"].toString()
+                            if (status == "true") {
+                                url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_register)
+                                formBody = FormBody.Builder()
+                                    .add("Users_Email", email)
+                                    .add("Users_Username", username.toString())
+                                    .add("Users_Password", password.toString())
+                                    .build()
+                                request = Request.Builder()
+                                    .url(url)
+                                    .post(formBody)
+                                    .build()
 
-                            response = okHttpClient.newCall(request).execute()
-                            if(response.isSuccessful) {
-                                obj = JSONObject(response.body!!.string())
-                                status = obj["status"].toString()
-                                if (status == "true") {
-                                    val message = obj["message"].toString()
-                                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, LoginActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
-                                }else if (status == "false") {
-                                    val message = obj["message"].toString()
-                                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                                    clearEdtOTP();
-                                    return@setOnClickListener
+                                response = okHttpClient.newCall(request).execute()
+                                if(response.isSuccessful) {
+                                    obj = JSONObject(response.body!!.string())
+                                    status = obj["status"].toString()
+                                    if (status == "true") {
+                                        val message = obj["message"].toString()
+                                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                                        val intent = Intent(this, LoginActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }else if (status == "false") {
+                                        val message = obj["message"].toString()
+                                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                                        clearEdtOTP();
+                                        findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                                        return@postDelayed
+                                    }
+                                }else{
+                                    Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
+                                    findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                                    return@postDelayed
                                 }
-                            }else{
-                                Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
-                                return@setOnClickListener
+                            } else if (status == "false") {
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                                clearEdtOTP();
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                                return@postDelayed
                             }
-                        } else if (status == "false") {
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP();
-                            return@setOnClickListener
-                        }
-                    }else{
-                        Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
-                        return@setOnClickListener
-                    }
-                }
-            }else if (pageType == "ResetPassword"){
-                if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_verify_otp)
-                    val okHttpClient = OkHttpClient()
-                    val formBody: RequestBody = FormBody.Builder()
-                        .add("Users_Email", email)
-                        .add("OTP", otp)
-                        .add("Value", "1")
-                        .build()
-                    var request: Request = Request.Builder()
-                        .url(url)
-                        .post(formBody)
-                        .build()
-
-                    val response = okHttpClient.newCall(request).execute()
-                    if(response.isSuccessful) {
-                        val  obj = JSONObject(response.body!!.string())
-                        val status = obj["status"].toString()
-                        if (status == "true") {
-                            intent = Intent(this, ResetPasswordActivity::class.java)
-                            intent.putExtra("email", email)
-                            startActivity(intent)
-                            finish()
                         }else{
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP();
-                            return@setOnClickListener
+                            Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
+                            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                            return@postDelayed
                         }
-                    }else{
-                        Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
-                        return@setOnClickListener
                     }
+                }else if (pageType == "ResetPassword"){
+                    if (email != null){
+                        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_verify_otp)
+                        val okHttpClient = OkHttpClient()
+                        val formBody: RequestBody = FormBody.Builder()
+                            .add("Users_Email", email)
+                            .add("OTP", otp)
+                            .add("Value", "1")
+                            .build()
+                        var request: Request = Request.Builder()
+                            .url(url)
+                            .post(formBody)
+                            .build()
+
+                        val response = okHttpClient.newCall(request).execute()
+                        if(response.isSuccessful) {
+                            val  obj = JSONObject(response.body!!.string())
+                            val status = obj["status"].toString()
+                            if (status == "true") {
+                                intent = Intent(this, ResetPasswordActivity::class.java)
+                                intent.putExtra("email", email)
+                                startActivity(intent)
+                                finish()
+                            }else{
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                                clearEdtOTP();
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                                return@postDelayed
+                            }
+                        }else{
+                            Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
+                            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                            return@postDelayed
+                        }
+                    }
+                }else{
+                    Toast.makeText(applicationContext, "เกิดข้อผิดพลาด", Toast.LENGTH_LONG).show()
+                    findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                    return@postDelayed
                 }
-            }else{
-                Toast.makeText(applicationContext, "เกิดข้อผิดพลาด", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+            }, 500)
         }
 
         resendButton.setOnClickListener {
-            if (pageType == "Register"){
-                if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_register)
-                    val okHttpClient = OkHttpClient()
-                    val formBody: RequestBody = FormBody.Builder()
-                        .add("Users_Email", email)
-                        .add("Value", "1")
-                        .build()
-                    val request: Request = Request.Builder()
-                        .url(url)
-                        .post(formBody)
-                        .build()
-                    val response = okHttpClient.newCall(request).execute()
-                    if(response.isSuccessful) {
-                        val  obj = JSONObject(response.body!!.string())
-                        val status = obj["status"].toString()
-                        if (status == "true") {
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP()
-                            return@setOnClickListener
-                        }else if (status == "false") {
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP()
-                            return@setOnClickListener
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (pageType == "Register") {
+                    if (email != null) {
+                        val url =
+                            getString(R.string.url_server) + getString(R.string.port_3000) + getString(
+                                R.string.api_request_register
+                            )
+                        val okHttpClient = OkHttpClient()
+                        val formBody: RequestBody = FormBody.Builder()
+                            .add("Users_Email", email)
+                            .add("Value", "1")
+                            .build()
+                        val request: Request = Request.Builder()
+                            .url(url)
+                            .post(formBody)
+                            .build()
+                        val response = okHttpClient.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val obj = JSONObject(response.body!!.string())
+                            val status = obj["status"].toString()
+                            if (status == "true") {
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG)
+                                    .show()
+                                clearEdtOTP()
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                    View.GONE
+                            } else if (status == "false") {
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG)
+                                    .show()
+                                clearEdtOTP()
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                    View.GONE
+                                return@postDelayed
+                            }
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "เกิดข้อผิดพลาดในการเชื่อมต่อ",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                View.GONE
+                            return@postDelayed
                         }
-                    }else{
-                        Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
-                        return@setOnClickListener
                     }
-                }
-            }else if (pageType == "ResetPassword"){
-                if (email != null){
-                    val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_request_password)
-                    val okHttpClient = OkHttpClient()
-                    val formBody: RequestBody = FormBody.Builder()
-                        .add("Users_Email", email)
-                        .add("Value", "1")
-                        .build()
-                    val request: Request = Request.Builder()
-                        .url(url)
-                        .post(formBody)
-                        .build()
-                    val response = okHttpClient.newCall(request).execute()
-                    if(response.isSuccessful) {
-                        val  obj = JSONObject(response.body!!.string())
-                        val status = obj["status"].toString()
-                        if (status == "true") {
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP()
-                            return@setOnClickListener
-                        }else if (status == "false") {
-                            val message = obj["message"].toString()
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                            clearEdtOTP()
-                            return@setOnClickListener
+                } else if (pageType == "ResetPassword") {
+                    if (email != null) {
+                        val url =
+                            getString(R.string.url_server) + getString(R.string.port_3000) + getString(
+                                R.string.api_request_password
+                            )
+                        val okHttpClient = OkHttpClient()
+                        val formBody: RequestBody = FormBody.Builder()
+                            .add("Users_Email", email)
+                            .add("Value", "1")
+                            .build()
+                        val request: Request = Request.Builder()
+                            .url(url)
+                            .post(formBody)
+                            .build()
+                        val response = okHttpClient.newCall(request).execute()
+                        if (response.isSuccessful) {
+                            val obj = JSONObject(response.body!!.string())
+                            val status = obj["status"].toString()
+                            if (status == "true") {
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG)
+                                    .show()
+                                clearEdtOTP()
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                    View.GONE
+                            } else if (status == "false") {
+                                val message = obj["message"].toString()
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_LONG)
+                                    .show()
+                                clearEdtOTP()
+                                findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                    View.GONE
+                                return@postDelayed
+                            }
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "เกิดข้อผิดพลาดในการเชื่อมต่อ",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility =
+                                View.GONE
+                            return@postDelayed
                         }
-                    }else{
-                        Toast.makeText(applicationContext, "เกิดข้อผิดพลาดในการเชื่อมต่อ", Toast.LENGTH_LONG).show()
-                        return@setOnClickListener
                     }
+                } else {
+                    Toast.makeText(applicationContext, "เกิดข้อผิดพลาด", Toast.LENGTH_LONG).show()
+                    findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+                    return@postDelayed
                 }
-            }else{
-                Toast.makeText(applicationContext, "เกิดข้อผิดพลาด", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+
+            }, 500)
         }
     }
 
@@ -276,5 +326,13 @@ class AcceptOtpActivity : AppCompatActivity() {
        findViewById<EditText>(R.id.editTextOTP4).text.clear()
        findViewById<EditText>(R.id.editTextOTP5).text.clear()
        findViewById<EditText>(R.id.editTextOTP6).text.clear()
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

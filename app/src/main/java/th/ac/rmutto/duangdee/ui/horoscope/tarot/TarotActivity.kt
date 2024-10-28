@@ -5,8 +5,11 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -16,6 +19,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -30,8 +34,8 @@ import th.ac.rmutto.duangdee.ui.login.LoginActivity
 import th.ac.rmutto.duangdee.ui.register.RegisMailActivity
 
 class TarotActivity : AppCompatActivity() {
-    private val context = this
     private var valueCard: Int = 0
+    private var roundPlay : Int = 0
 
     private var cardName : String? = null
     private var cardWorkTopic : String? = null
@@ -42,6 +46,7 @@ class TarotActivity : AppCompatActivity() {
     private var decode : String? = null
     private var tokens: String? = null
     private lateinit var encryption: Encryption
+    private lateinit var lottie: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +65,7 @@ class TarotActivity : AppCompatActivity() {
         encryption = Encryption(this)
         decode = decrypt(usersID.toString(), encryption.getKeyFromPreferences())
         tokens = decrypt(token.toString(), encryption.getKeyFromPreferences())
+        lottie = findViewById<LottieAnimationView>(R.id.lottie_loading)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -99,14 +105,19 @@ class TarotActivity : AppCompatActivity() {
         btBack.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         btPredict.setOnClickListener {
-            if (valueCard == 1) {
-                dialogPredict()
-            } else {
-                dialogWarning()
-            }
+            lottie.visibility = View.VISIBLE
+            lottie.playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (valueCard == 1) {
+                    dialogPredict()
+                } else {
+                    dialogWarning()
+                }
+            }, 500)
         }
     }
 
@@ -164,6 +175,7 @@ class TarotActivity : AppCompatActivity() {
         val btAccept = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btAccept)
         val btClose = dialogView.findViewById<com.google.android.material.imageview.ShapeableImageView>(R.id.btClose)
 
+        roundPlay += 1
         val randomNumbers = randomCard(getCount().toInt())
         showCard(randomNumbers.toString())
         clearCard()
@@ -189,6 +201,12 @@ class TarotActivity : AppCompatActivity() {
         btClose.setOnClickListener {
             dialog.dismiss()
         }
+
+        if(roundPlay == 4){
+            addPlayCard(randomNumbers.toString())
+        }
+
+        findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
         dialog.show()
     }
 
@@ -203,6 +221,8 @@ class TarotActivity : AppCompatActivity() {
         btOK.setOnClickListener {
             dialog.dismiss()
         }
+
+        findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
         dialog.show()
     }
 
@@ -221,6 +241,8 @@ class TarotActivity : AppCompatActivity() {
         noBtn.setOnClickListener {
             dialog.dismiss()
         }
+
+        findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
         dialog.show()
     }
 
@@ -256,6 +278,7 @@ class TarotActivity : AppCompatActivity() {
             }
         }else{
             Toast.makeText(this, "ไม่สามารถเชื่อต่อกับเซิร์ฟเวอร์ได้", Toast.LENGTH_SHORT).show()
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
         }
     }
 
@@ -310,5 +333,13 @@ class TarotActivity : AppCompatActivity() {
             startActivity(intent)
         }
         return "0"
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

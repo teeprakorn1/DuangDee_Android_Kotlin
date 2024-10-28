@@ -56,6 +56,7 @@
         style="@style/button_gold"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:elevation="0dp"
         android:text="@string/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +79,7 @@
         app:iconGravity="start"
         app:iconSize="20dp"
         app:iconTint="@color/gold"
+        android:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ButtonLogin"
@@ -150,5 +152,20 @@
         app:layout_constraintTop_toBottomOf="@+id/ButtonLoginGoogle"
         app:srcCompat="@drawable/img_line" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading"
+        android:background="#CC000000"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,9 @@ import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class HistoryTarotFragment : Fragment() {
     private var cardName : String? = null
@@ -183,7 +186,7 @@ class HistoryTarotFragment : Fragment() {
             holder.data = data
 
             holder.textTarot.text = getCardData(data.cardID)
-            holder.txtDate.text = data.playCardRegisDate
+            holder.txtDate.text = dateFormat(data.playCardRegisDate)
 
             // Set click listener for the image
             holder.linearLayoutHistoryList.setOnClickListener {
@@ -255,6 +258,17 @@ class HistoryTarotFragment : Fragment() {
         } else {
             startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
+        }
+    }
+
+    private fun dateFormat(value: String): String {
+        if (value == "N/A" || value == "null") {
+            return value
+        } else {
+            val instant = Instant.parse(value)
+            val localDateTime = instant.atZone(ZoneId.of("Asia/Bangkok")).toLocalDateTime()
+            val formattedDateTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+            return formattedDateTime
         }
     }
 

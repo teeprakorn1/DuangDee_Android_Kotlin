@@ -2,6 +2,8 @@ package th.ac.rmutto.duangdee.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.databinding.FragmentDashboardBinding
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
@@ -32,11 +35,14 @@ class DashboardFragment : Fragment() {
         val btSummary = view.findViewById<Button>(R.id.bt_summary)
 
         btSummary.setOnClickListener{
-            val intent = Intent(activity, DashboardResultActivity::class.java)
-            intent.putExtra("page_type","Dashboard")
-            startActivity(intent)
+            view.findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            view.findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(activity, DashboardResultActivity::class.java)
+                intent.putExtra("page_type","Dashboard")
+                startActivity(intent)
+            }, 500)
         }
-
         return view
     }
 }

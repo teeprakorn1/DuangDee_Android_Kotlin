@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +15,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -68,31 +72,39 @@ class ZodiacResultActivity : AppCompatActivity() {
         showZodiac(zodiacID.toString())
 
         backBtn.setOnClickListener {
-            if (pageType == "Home") {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }else if(pageType == "Total"){
-                val intent = Intent(this, ZodiacTotalActivity::class.java)
-                startActivity(intent)
-                finish()
-            }else if (pageType == "Horoscope"){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (pageType == "Home") {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(pageType == "Total"){
+                    val intent = Intent(this, ZodiacTotalActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if (pageType == "Horoscope"){
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }, 500)
         }
 
         showZodiacBtn.setOnClickListener{
-            if(pageType == "Total"){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }else{
-                val intent = Intent(this, ZodiacTotalActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(pageType == "Total"){
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val intent = Intent(this, ZodiacTotalActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }, 500)
         }
 
     }
@@ -143,5 +155,13 @@ class ZodiacResultActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.txt_WorkTopic).text = "การงาน: $zodiacWorkTopic"
         findViewById<TextView>(R.id.txt_FinanceTopic).text = "การเงิน: $zodiacFinanceTopic"
         findViewById<TextView>(R.id.txt_LoveTopic).text = "ความรัก: $zodiacLoveTopic"
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

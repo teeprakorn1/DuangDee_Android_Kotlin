@@ -70,4 +70,7 @@ dependencies {
     annotationProcessor (libs.compiler)
     implementation(libs.camera.core)
     implementation(libs.camera.camera2)
+    implementation("com.airbnb.android:lottie:6.5.0")
+    implementation ("com.google.android.material:material:1.4.0")
+
 }

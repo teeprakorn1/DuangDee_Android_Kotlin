@@ -132,7 +132,7 @@ class DashboardResultActivity : AppCompatActivity() {
                 handDetailID = obj["HandDetail_ID"].toString()
                 getPlayCardInDay(usersID)
             }else if(status == "false"){
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นการดูดวงรายมือก่อนถึงจะสามารถสรุปได้")
             } else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -160,12 +160,12 @@ class DashboardResultActivity : AppCompatActivity() {
                 cardID = obj["Card_ID"].toString()
                 getCardDetail(usersID, cardID)
             }else if(status == "false"){
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
             }
         } else {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
         }
     }
 
@@ -189,12 +189,12 @@ class DashboardResultActivity : AppCompatActivity() {
                 checkZodiacDay(usersDateOfBirth, usersID)
 
             }else if(status == "false"){
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
             }
         } else {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องเล่นการดูดวงไพ่ก่อนถึงจะสามารถสรุปได้")
         }
     }
 
@@ -214,20 +214,20 @@ class DashboardResultActivity : AppCompatActivity() {
                 if (status == "true") {
                     return obj.optString("Users_BirthDate", "N/A")
                 } else {
-                    dialogWarning()
+                    dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
                 }
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
             }
         } catch (e: Exception) {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
         }
         return "N/A"
     }
 
     private fun checkZodiacDay(usersDateOfBirth: String , usersID: String){
         if (usersDateOfBirth == "N/A" || usersDateOfBirth == "null"){
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
         }else{
             val birthDayFormat = dateFormat(usersDateOfBirth)
             val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_check_zodiac)
@@ -248,10 +248,10 @@ class DashboardResultActivity : AppCompatActivity() {
                     zodiacID = obj["Zodiac_ID"].toString()
                     getZodiacByID(zodiacID, usersID)
                 }else{
-                    dialogWarning()
+                    dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
                 }
             }else{
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
             }
         }
     }
@@ -275,12 +275,12 @@ class DashboardResultActivity : AppCompatActivity() {
                 val summaryDetailID = getSummaryDetailID(sumScore.toFloat())
                 addSummary(sumScore, usersID, zodiacID, playCardID, playHandID, summaryDetailID.toString())
             }else if(status == "false"){
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
             }
         } else {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องตั้งวันเกิด(แก้ไขโปรไฟล์) ก่อนถึงจะสามารถสรุปได้")
         }
     }
 
@@ -315,10 +315,10 @@ class DashboardResultActivity : AppCompatActivity() {
             if (status == "true") {
                 setDisplayData(usersID)
             }else{
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
             }
         }else{
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
         }
     }
 
@@ -364,10 +364,10 @@ class DashboardResultActivity : AppCompatActivity() {
             if (status == "true") {
                 return obj["SummaryDetail_MinPercent"].toString().toFloat()
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
             }
         } else {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
         }
         return -1f
     }
@@ -393,10 +393,10 @@ class DashboardResultActivity : AppCompatActivity() {
                 cardLoveScore = obj["Card_LoveScore"].toString()
                 summaryDetail = obj["SummaryDetail_Detail"].toString()
             } else {
-                dialogWarning()
+                dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
             }
         } else {
-            dialogWarning()
+            dialogWarning("คุณจำเป็นต้องเล่นทุกอย่างก่อนถึงจะสามารถสรุปได้")
         }
     }
 
@@ -473,7 +473,7 @@ class DashboardResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun dialogWarning() {
+    private fun dialogWarning(text : String) {
         val dialogView = LayoutInflater.from(this ).inflate(R.layout.dialog_nosummary, null)
         val dialogBuilder = AlertDialog.Builder(this ).setView(dialogView)
         val dialog = dialogBuilder.create()
@@ -481,12 +481,20 @@ class DashboardResultActivity : AppCompatActivity() {
 
         val txtMessage = dialogView.findViewById<TextView>(R.id.textviewshowmassege1)
         val btYes = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btYes)
-        txtMessage.text = "คุณจำเป็นต้องเล่นการดูดวงรายมือก่อน ถึงจะสามารถดูประวัติการเล่นของคุณได้"
+        txtMessage.text = text
         btYes.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
         dialog.show()
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

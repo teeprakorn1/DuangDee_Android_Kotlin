@@ -122,10 +122,17 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="ยอมรับข้อกำหนดและเงื่อนไขในการใช้บริการ"
+                    android:layout_weight="0.3"
+                    android:gravity="right"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="ยอมรับข้อกำหนดและเงื่อนไขในการใช้บริการ" />
             </LinearLayout>
 
             <Button
@@ -137,5 +144,19 @@
         </LinearLayout>
 
     </LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading"
+        android:background="#CC000000"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

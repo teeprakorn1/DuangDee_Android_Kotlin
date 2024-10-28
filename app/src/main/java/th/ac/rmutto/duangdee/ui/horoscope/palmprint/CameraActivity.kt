@@ -7,7 +7,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -23,7 +26,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.airbnb.lottie.LottieAnimationView
 import com.google.common.util.concurrent.ListenableFuture
+import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
 import java.io.File
 import java.io.FileOutputStream
@@ -65,7 +70,11 @@ class CameraActivity : AppCompatActivity() {
 
         val captureButton: Button = findViewById(R.id.captureButton)
         captureButton.setOnClickListener {
-            capturePhoto()
+            findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.VISIBLE
+            findViewById<LottieAnimationView>(R.id.lottie_loading).playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                capturePhoto()
+            }, 500)
         }
     }
 
@@ -115,9 +124,6 @@ class CameraActivity : AppCompatActivity() {
         imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    // Image saved successfully
-                    Toast.makeText(this@CameraActivity, "Photo captured and saved!", Toast.LENGTH_SHORT).show()
-
                     // Create Uri from File
                     val photoUri = Uri.fromFile(photoFile)
 
@@ -129,7 +135,8 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onError(exception: ImageCaptureException) {
-                    Log.e("CameraActivity", "Photo capture failed: ${exception.message}", exception)
+                    Toast.makeText(this@CameraActivity, "เกิดข้อผิดพลาดในการจับภาพ", Toast.LENGTH_SHORT).show()
+                    findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
                 }
             }
         )
@@ -148,5 +155,13 @@ class CameraActivity : AppCompatActivity() {
         if (allPermissionsGranted()) {
             startCamera()
         }
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

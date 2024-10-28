@@ -11,13 +11,16 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 //import com.bumptech.glide.Glide
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -52,6 +55,14 @@ class EditProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Method to hide the keyboard when clicking outside the EditText
+        findViewById<ConstraintLayout>(R.id.EditProfile_Activity).setOnClickListener {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+            currentFocus?.clearFocus()
+        }
+
         // Start Decryption SharedPreferences
         val sharedPref = getSharedPreferences("DuangDee_Pref", Context.MODE_PRIVATE)
         val usersID = sharedPref.getString("usersID", null)
@@ -87,26 +98,27 @@ class EditProfileActivity : AppCompatActivity() {
     }
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
-        var yearDate = calendar.get(Calendar.YEAR)
+        val yearDate = calendar.get(Calendar.YEAR)
         var monthDate = calendar.get(Calendar.MONTH)
-        var dayDate = calendar.get(Calendar.DAY_OF_MONTH)
+        val dayDate = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, { _, year, month, day ->
-            yearDate = year
-            monthDate = month
-            dayDate = day
+        val datePickerDialog = DatePickerDialog(
+            ContextThemeWrapper(this, R.style.WhiteDatePickerDialog), // บังคับใช้ธีม
+            { _, year, month, day ->
+                monthDate = month + 1
 
-            val selectedDate = Calendar.getInstance().apply {
-                set(yearDate, monthDate, dayDate)
-            }
+                findViewById<EditText>(R.id.editTextRegisDay).setText(day.toString())
+                findViewById<EditText>(R.id.editTextRegisMonth).setText(monthDate.toString())
+                findViewById<EditText>(R.id.editTextRegisYear).setText(year.toString())
 
-            monthDate+=1
-            findViewById<EditText>(R.id.editTextRegisDay).setText(dayDate.toString())
-            findViewById<EditText>(R.id.editTextRegisMonth).setText((monthDate).toString())
-            findViewById<EditText>(R.id.editTextRegisYear).setText(yearDate.toString())
-
-            formattedDate = dateFormat(selectedDate)
-        }, yearDate, monthDate, dayDate)
+                // เรียกฟังก์ชัน dateFormat ที่คุณมีเพื่อจัดรูปแบบวันที่
+                val selectedDate = Calendar.getInstance().apply {
+                    set(year, month, day)
+                }
+                formattedDate = dateFormat(selectedDate)
+            },
+            yearDate, monthDate, dayDate
+        )
 
         datePickerDialog.show()
     }
@@ -306,5 +318,13 @@ class EditProfileActivity : AppCompatActivity() {
         val localDate = instant.atZone(ZoneId.of("Asia/Bangkok")).toLocalDate()
         val formattedDate = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         return formattedDate;
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

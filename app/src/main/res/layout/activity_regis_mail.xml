@@ -88,7 +88,7 @@
 
                 <TextView
                     android:id="@+id/txt_Age"
-                    android:layout_width="290dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ท่านมีอายุมากกว่า 18ปี"
                     android:textAlignment="viewStart"
@@ -108,14 +108,29 @@
                     android:layout_height="25dp"
                     android:text="CheckBox" />
 
-                <TextView
-                    android:id="@+id/txt_PrivacyPolicy"
-                    android:layout_width="290dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/privacy_policy"
-                    android:textSize="15dp"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ท่านยอมรับใน "
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/txt_PrivacyPolicy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/privacy_policy"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+                </LinearLayout>
 
             </TableRow>
 
@@ -147,4 +162,18 @@
             android:fontFamily="@font/giraffe_font"
             android:text="@string/bt_next" />
     </LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading"
+        android:background="#CC000000"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

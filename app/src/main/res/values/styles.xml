@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- res/values/styles.xml -->
+    <style name="WhiteDatePickerDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- ปรับเปลี่ยนสีของปุ่มให้เป็นสีทอง -->
+        <item name="colorAccent">#FFD700</item> <!-- สีทองสำหรับปุ่มตกลง/ยกเลิก -->
+        <item name="android:textColor">#CE0000</item> <!-- สีของข้อความในปุ่มเป็นสีขาว -->
+        <item name="android:background">#756D6D</item> <!-- สีพื้นหลังของ Dialog (ทองอ่อน) -->
+    </style>
+
+    <style name="WhiteDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:background">#000000</item> <!-- สีพื้นหลังของตัวเลือกปฏิทิน (ทองอ่อน) -->
+        <item name="android:textColorPrimary">#000000</item> <!-- สีข้อความหลักเป็นสีดำ -->
+        <item name="android:textColorSecondary">#666666</item> <!-- สีข้อความรอง -->
+    </style>
+</resources>

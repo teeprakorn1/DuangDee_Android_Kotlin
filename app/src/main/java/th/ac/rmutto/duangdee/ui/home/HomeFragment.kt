@@ -4,19 +4,24 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+import th.ac.rmutto.duangdee.MainActivity
 import th.ac.rmutto.duangdee.R
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption
 import th.ac.rmutto.duangdee.shared_preferences_encrypt.Encryption.Companion.decrypt
@@ -36,6 +41,7 @@ class HomeFragment : Fragment() {
     private lateinit var usersDateOfBirth: String
     private lateinit var userID: String
     private var tokens: String? = null
+    private lateinit var lottie: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +56,15 @@ class HomeFragment : Fragment() {
         val btZodiac = view.findViewById<ImageButton>(R.id.bt_zodiac)
         val btTarot = view.findViewById<ImageButton>(R.id.bt_tarot)
         val btHand = view.findViewById<ImageView>(R.id.bt_hand)
+        lottie = view.findViewById<LottieAnimationView>(R.id.lottie_loading)
 
         btZodiac.setOnClickListener {
+            lottie.visibility = View.VISIBLE
+            lottie.playAnimation()
             userID = getUserId()
             usersDateOfBirth = getUserBirthday(userID)
             if (usersDateOfBirth == "N/A" || usersDateOfBirth == "null"){
+                lottie.visibility = View.GONE
                 showDialog()
             }else{
                 val birthDayFormat = dateFormat(usersDateOfBirth)
@@ -74,11 +84,13 @@ class HomeFragment : Fragment() {
                     val status = obj["status"].toString()
                     if (status == "true") {
                         val zodiacID = obj["Zodiac_ID"].toString()
-                        val intent = Intent(activity, ZodiacResultActivity::class.java)
-                        intent.putExtra("zodiacID", zodiacID)
-                        intent.putExtra("page_type","Home")
-                        startActivity(intent)
-                        activity?.finish()
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            val intent = Intent(activity, ZodiacResultActivity::class.java)
+                            intent.putExtra("zodiacID", zodiacID)
+                            intent.putExtra("page_type","Home")
+                            startActivity(intent)
+                            activity?.finish()
+                        }, 500) // เวลาในหน่วยมิลลิวินาที (3 วินาที)
                     }else{
                         val message = obj["message"].toString()
                         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
@@ -90,17 +102,33 @@ class HomeFragment : Fragment() {
         }
 
         btTarot.setOnClickListener {
-            val intent = Intent(activity, TarotActivity::class.java)
-            intent.putExtra("page_type","Home")
-            startActivity(intent)
-            activity?.finish()
+            lottie.visibility = View.VISIBLE
+            lottie.playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(getPlayCardInDay(getUserId()) == 1){
+                    val intent = Intent(activity, TarotActivity::class.java)
+                    intent.putExtra("page_type","Home")
+                    startActivity(intent)
+                    activity?.finish()
+                }else{
+                    dialogWarning("คุณมีการรับคำทำนายของการเล่นไพ่วันนี้ไปแล้ว สามารถเล่นใหม่ได้อีกในวันพรุ่งนี้",view)
+                }
+            },500)
         }
 
         btHand.setOnClickListener{
-            val intent = Intent(activity, PalmprintCameraActivity::class.java)
-            intent.putExtra("page_type","Home")
-            startActivity(intent)
-            activity?.finish()
+            lottie.visibility = View.VISIBLE
+            lottie.playAnimation()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(getPlayHandInWeek(getUserId()) == 1){
+                    val intent = Intent(activity, PalmprintCameraActivity::class.java)
+                    intent.putExtra("page_type","Home")
+                    startActivity(intent)
+                    activity?.finish()
+                }else{
+                    dialogWarning("คุณมีการทำนายผลรายมือไปแล้ว แล้วมาทำนายใหม่ อีก 7 วัน",view)
+                }
+            },500)
         }
 
         return view
@@ -146,7 +174,6 @@ class HomeFragment : Fragment() {
                 activity?.finish()
             }
         } catch (e: Exception) {
-            Log.e("VerifyTokenError", "Error verifying token", e)
             startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()
         }
@@ -184,6 +211,76 @@ class HomeFragment : Fragment() {
             dialog.dismiss()
         }
 
+        dialog.show()
+    }
+
+    private fun getPlayHandInWeek(usersID: String): Int{
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_playhand_inweek_top1) + usersID
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder()
+            .url(url)
+            .get()
+            .addHeader("x-access-token", tokens.toString())
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if (response.isSuccessful) {
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "true") {
+                return 0
+            }else if(status == "false"){
+                return 1
+            } else {
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
+            }
+        } else {
+            startActivity(Intent(activity, MainActivity::class.java))
+            activity?.finish()
+        }
+        return 0
+    }
+
+    private fun getPlayCardInDay(usersID: String): Int{
+        val url = getString(R.string.url_server) + getString(R.string.port_3000) + getString(R.string.api_get_playcard_inday_top1) + usersID
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder()
+            .url(url)
+            .get()
+            .addHeader("x-access-token", tokens.toString())
+            .build()
+        val response = okHttpClient.newCall(request).execute()
+        if (response.isSuccessful) {
+            val obj = JSONObject(response.body!!.string())
+            val status = obj["status"].toString()
+            if (status == "true") {
+                return 0
+            }else if(status == "false"){
+                return 1
+            } else {
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
+            }
+        } else {
+            startActivity(Intent(activity, MainActivity::class.java))
+            activity?.finish()
+        }
+        return 0
+    }
+
+    private fun dialogWarning(text : String = "", view : View) {
+        val dialogView = LayoutInflater.from(requireContext() ).inflate(R.layout.dialog_nosummary, null)
+        val dialogBuilder = AlertDialog.Builder(requireContext() ).setView(dialogView)
+        val dialog = dialogBuilder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val txtMessage = dialogView.findViewById<TextView>(R.id.textviewshowmassege1)
+        val btYes = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btYes)
+        txtMessage.text = text
+        btYes.setOnClickListener {
+            view.findViewById<LottieAnimationView>(R.id.lottie_loading).visibility = View.GONE
+            dialog.dismiss()
+        }
         dialog.show()
     }
 }

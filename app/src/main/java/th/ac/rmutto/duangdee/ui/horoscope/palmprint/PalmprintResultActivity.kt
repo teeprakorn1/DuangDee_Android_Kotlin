@@ -60,16 +60,9 @@ class PalmprintResultActivity : AppCompatActivity() {
             getHandDetail(handDetailID.toString())
         }
 
-        val backBtn = findViewById<Button>(R.id.backBtn)
-        val verifyBtn = findViewById<Button>(R.id.VerifyBtn)
+        val VerifyBtn = findViewById<Button>(R.id.VerifyBtn)
 
-        backBtn.setOnClickListener {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        verifyBtn.setOnClickListener {
+        VerifyBtn.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -110,5 +103,13 @@ class PalmprintResultActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }
