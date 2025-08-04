@@ -61,9 +61,5 @@ The system is divided into **3 major parts**:
 
 | Main Screen | Profile Screen | Menu Screen | Game Screen | Horoscope Screen | Palmprint Screen |
 |-----------|--------------|--------|-----------|-----------|-----------|
-| ![](main_screen/.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
-
----
-
-## 📁 Folder Structure (Mobile App)
+| ![](screenshots/main_screen/.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
 
