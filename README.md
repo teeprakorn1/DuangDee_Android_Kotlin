@@ -60,7 +60,7 @@ The system is divided into **3 major parts**:
 > Add real UI screenshots here from the app (designed in Figma and implemented in Android)
 
 | Main Screen | Profile Screen | Menu Screen | Game Screen | Horoscope Screen | Palmprint Screen |
-|------|--------------|--------|-----------|-----------|-----------|
+|-----------|--------------|--------|-----------|-----------|-----------|
 | ![](main_screen/.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
 
 ---
