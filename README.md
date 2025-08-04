@@ -61,5 +61,5 @@ The system is divided into **3 major parts**:
 
 | Main Screen | Profile Screen | Menu Screen | Game Screen | Horoscope Screen | Palmprint Screen |
 |-----------|--------------|--------|-----------|-----------|-----------|
-| ![](screenshots/main_screen/.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
+| ![](screenshots/main_screen.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
 
