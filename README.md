@@ -12,7 +12,10 @@ This project was developed as part of a university assignment in **Year 3, Semes
 - 🃏 **Tarot Card Reading** – Draw cards and receive spiritual insights
 - 🎂 **Birthday Horoscope** – Analyze zodiac-based predictions using birth date
 - 📅 **Daily Horoscope** – Daily astrological summary personalized for the user
-- 👤 User authentication and profile system
+- 👤 User authentication and profile system with **Firebase OAuth login**
+- 🔐 Token encryption for every API request to enhance security
+- 📧 Password reset via email functionality
+- 🛡️ Rate limiting and XSS protection implemented in the Node.js backend
 - 🔗 Connects to backend APIs and ML models
 
 ---
@@ -23,10 +26,10 @@ The DuangDee system is divided into **4 major components**, each responsible for
 
 | Component           | Description |
 |---------------------|-------------|
-| **📱 Mobile Frontend (Kotlin)** | Android application developed using Kotlin and Jetpack libraries. Responsible for user interaction, UI display, and communication with backend and AI services. |
-| **🌐 Backend API (Node.js)** | RESTful API server built with Node.js and Express. Handles user authentication, profile management, tarot logic, birthday horoscope, and daily fortune content. |
+| **📱 Mobile Frontend (Kotlin)** | Android application developed using Kotlin and Jetpack libraries. Responsible for user interaction, UI display, with backend and AI services. |
+| **🌐 Backend API (Node.js)** | RESTful API server built with Node.js and Express. Handles user authentication (including Firebase OAuth), profile management, tarot logic, birthday horoscope, and daily fortune content. Implements token encryption, rate limiting, and XSS protection. |
 | **🧠 AI Engine (Python)** | Python-based microservice (Flask) that processes palmprint images using an ML model (OpenCV / TensorFlow). Receives images from mobile app and returns predictions. |
-| **🖥️ Web Admin (React.js)** | Web-based admin dashboard built with React. Allows admins to manage users, tarot cards, and horoscope content. Communicates with the same Node.js backend. |
+| **🖥️ Web Admin (React.js)** | Web-based admin dashboard built with React. Allows admins to manage users, tarot cards, and horoscope content. Node.js backend. |
 
 > All components are loosely coupled and communicate via REST APIs.
 
@@ -46,7 +49,11 @@ The DuangDee system is divided into **4 major components**, each responsible for
 ### 🌐 Backend (API)
 
 - Node.js + Express
-- JWT Authentication
+- Firebase OAuth Authentication integration
+- JWT Token encryption for every request
+- Password reset email system
+- Rate limiting to prevent abuse
+- XSS attack protection
 - MySQL
 - REST API for horoscope, tarot, and user handling
 
@@ -54,11 +61,10 @@ The DuangDee system is divided into **4 major components**, each responsible for
 
 An additional **Admin Dashboard** is developed using **React.js** to manage the backend data:
 
-- 📊 Manage users, horoscopes, and tarot card sets
-- 📥 View palmprint submission logs
-- 🔐 Admin authentication
-- 🌈 Built using React + Tailwind CSS
-- 📡 Communicates with the same Node.js API as the mobile app
+- Manage users, horoscopes, and tarot card sets
+- View palmprint submission logs
+- Admin authentication
+- Built using React + Tailwind CSS
 
 ## 🎓 Academic Context
 
@@ -98,5 +104,4 @@ The system is tested using the following tools:
 
 | Main Screen | Profile Screen | Menu Screen | Game Screen | Horoscope Screen | Palmprint Screen |
 |-----------|--------------|--------|-----------|-----------|-----------|
-| ![](screenshots/main_screen.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) |
-
+| ![](screenshots/main_screen.jpg) | ![](screenshots/profile_screen.jpg) | ![](screenshots/menu_screen.jpg) | ![](screenshots/game_screen.jpg) | ![](screenshots/horoscope_screen.jpg) | ![](screenshots/palm_screen.jpg) | 
