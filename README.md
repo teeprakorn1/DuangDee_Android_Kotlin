@@ -35,9 +35,9 @@ The DuangDee system is divided into **4 major components**, each responsible for
 
 ---
 
-### 🧰 Tech Stack
+## 🧰 Tech Stack
 
-## 💻 Frontend (Android)
+### 💻 Frontend (Android)
 
 - Kotlin
 - ViewModel, LiveData, Retrofit2
@@ -46,7 +46,7 @@ The DuangDee system is divided into **4 major components**, each responsible for
 - Material Design UI components
 - **Designed with Figma**
 
-## 🌐 Backend (API)
+### 🌐 Backend (API)
 
 - Node.js + Express
 - Firebase OAuth Authentication integration
@@ -57,7 +57,7 @@ The DuangDee system is divided into **4 major components**, each responsible for
 - MySQL
 - REST API for horoscope, tarot, and user handling
 
-## 🖥️ Web Admin Panel
+### 🖥️ Web Admin Panel
 
 An additional **Admin Dashboard** is developed using **React.js** to manage the backend data:
 
@@ -66,7 +66,7 @@ An additional **Admin Dashboard** is developed using **React.js** to manage the 
 - Admin authentication
 - Built using React + Tailwind CSS
 
-## 🎓 Academic Context
+### 🎓 Academic Context
 
 This full system was developed as part of a **third-year university project (Semester 1)**.  
 It demonstrates skills in:
@@ -77,13 +77,13 @@ It demonstrates skills in:
 - UI/UX design with Figma
 - Automated testing with Robot Framework
 
-## 🧠 AI Module
+### 🧠 AI Module
 
 - Python (Flask)
 - OpenCV or TensorFlow/Keras (for palmprint analysis)
 - Trained model hosted separately from backend server
 
-## 🧪 Testing
+### 🧪 Testing
 
 The system is tested using the following tools:
 
@@ -98,7 +98,7 @@ The system is tested using the following tools:
 
 ---
 
-### 📸 Screenshots (Placeholder)
+## 📸 Screenshots (Placeholder)
 
 > Add real UI screenshots here from the app (designed in Figma and implemented in Android)
 
