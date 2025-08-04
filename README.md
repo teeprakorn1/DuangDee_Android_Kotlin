@@ -47,11 +47,47 @@ The system is divided into **3 major parts**:
 - MySQL
 - REST API for horoscope, tarot, and user handling
 
+## 🖥️ Web Admin Panel
+
+An additional **Admin Dashboard** is developed using **React.js** to manage the backend data:
+
+- 📊 Manage users, horoscopes, and tarot card sets
+- 📥 View palmprint submission logs
+- 🔐 Admin authentication
+- 🌈 Built using React + Tailwind CSS
+- 📡 Communicates with the same Node.js API as the mobile app
+
+---
+
+## 🎓 Academic Context
+
+This full system was developed as part of a **third-year university project (Semester 1)**.  
+It demonstrates skills in:
+
+- Cross-platform system design
+- Full-stack development
+- Mobile-to-ML integration
+- UI/UX design with Figma
+- Automated testing with Robot Framework
+
 ### 🧠 AI Module
 
 - Python (Flask)
 - OpenCV or TensorFlow/Keras (for palmprint analysis)
 - Trained model hosted separately from backend server
+
+## 🧪 Testing
+
+The system is tested using the following tools:
+
+- 🤖 **Robot Framework** – Used for writing acceptance tests in a readable syntax
+- 🌐 **SeleniumLibrary** – Automates UI testing for both mobile and web interfaces
+- ✅ Tests cover:
+  - User login & registration flows
+  - Fortune prediction flows (palmprint, tarot, birthday)
+  - UI navigation and backend API response validation
+
+> All automated tests are written in `.robot` files and can be run with a single command.
 
 ---
 
