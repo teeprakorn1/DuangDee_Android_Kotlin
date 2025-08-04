@@ -35,9 +35,9 @@ The DuangDee system is divided into **4 major components**, each responsible for
 
 ---
 
-## 🧰 Tech Stack
+### 🧰 Tech Stack
 
-### 💻 Frontend (Android)
+## 💻 Frontend (Android)
 
 - Kotlin
 - ViewModel, LiveData, Retrofit2
@@ -46,7 +46,7 @@ The DuangDee system is divided into **4 major components**, each responsible for
 - Material Design UI components
 - **Designed with Figma**
 
-### 🌐 Backend (API)
+## 🌐 Backend (API)
 
 - Node.js + Express
 - Firebase OAuth Authentication integration
@@ -77,7 +77,7 @@ It demonstrates skills in:
 - UI/UX design with Figma
 - Automated testing with Robot Framework
 
-### 🧠 AI Module
+## 🧠 AI Module
 
 - Python (Flask)
 - OpenCV or TensorFlow/Keras (for palmprint analysis)
@@ -98,7 +98,7 @@ The system is tested using the following tools:
 
 ---
 
-## 📸 Screenshots (Placeholder)
+### 📸 Screenshots (Placeholder)
 
 > Add real UI screenshots here from the app (designed in Figma and implemented in Android)
 
