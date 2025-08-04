@@ -19,13 +19,16 @@ This project was developed as part of a university assignment in **Year 3, Semes
 
 ## ⚙️ System Architecture
 
-The system is divided into **3 major parts**:
+The DuangDee system is divided into **4 major components**, each responsible for a specific part of the application:
 
-| Layer | Description |
-|-------|-------------|
-| **Frontend (Mobile)** | Kotlin-based Android app using Jetpack libraries |
-| **Backend (Node.js)** | RESTful API handling user data, tarot, birthday, daily horoscopes |
-| **AI Engine (Python)** | Palmprint recognition and prediction served via Python API |
+| Component           | Description |
+|---------------------|-------------|
+| **📱 Mobile Frontend (Kotlin)** | Android application developed using Kotlin and Jetpack libraries. Responsible for user interaction, UI display, and communication with backend and AI services. |
+| **🌐 Backend API (Node.js)** | RESTful API server built with Node.js and Express. Handles user authentication, profile management, tarot logic, birthday horoscope, and daily fortune content. |
+| **🧠 AI Engine (Python)** | Python-based microservice (Flask) that processes palmprint images using an ML model (OpenCV / TensorFlow). Receives images from mobile app and returns predictions. |
+| **🖥️ Web Admin (React.js)** | Web-based admin dashboard built with React. Allows admins to manage users, tarot cards, and horoscope content. Communicates with the same Node.js backend. |
+
+> All components are loosely coupled and communicate via REST APIs.
 
 ---
 
@@ -56,8 +59,6 @@ An additional **Admin Dashboard** is developed using **React.js** to manage the 
 - 🔐 Admin authentication
 - 🌈 Built using React + Tailwind CSS
 - 📡 Communicates with the same Node.js API as the mobile app
-
----
 
 ## 🎓 Academic Context
 
